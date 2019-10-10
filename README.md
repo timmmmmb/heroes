@@ -1,2 +1,2 @@
 # heroes
-the heroes case study for the java open source modul.
+This is the heroes case study for the java open source module.

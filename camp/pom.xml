@@ -12,5 +12,11 @@
     <artifactId>camp</artifactId>
     <packaging>jar</packaging>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>5.1.0.RELEASE</version>
+        </dependency>
+    </dependencies>
 </project>
