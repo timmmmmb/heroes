@@ -12,6 +12,12 @@
     <artifactId>camp</artifactId>
     <packaging>jar</packaging>
 
+    <properties>
+        <java.version>1.11</java.version>
+        <maven.compiler.source>1.11</maven.compiler.source>
+        <maven.compiler.target>1.11</maven.compiler.target>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
