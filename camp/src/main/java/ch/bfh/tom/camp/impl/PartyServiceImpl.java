@@ -3,9 +3,11 @@ package ch.bfh.tom.camp.impl;
 import ch.bfh.tom.camp.model.Party;
 import ch.bfh.tom.camp.service.HeroService;
 import ch.bfh.tom.camp.service.PartyService;
+import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 
+@Service
 public class PartyServiceImpl implements PartyService {
 
     private HeroService heroService;
