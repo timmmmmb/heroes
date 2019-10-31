@@ -1,5 +1,6 @@
 package ch.bfh.tom.camp;
 
+import ch.bfh.tom.camp.config.ServiceConfiguration;
 import ch.bfh.tom.camp.service.PartyService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
