@@ -1,4 +1,4 @@
-package ch.bfh.tom.camp.impl;
+package ch.bfh.tom.camp.service.impl;
 
 import ch.bfh.tom.camp.model.Party;
 import ch.bfh.tom.camp.service.HeroService;
@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 import java.util.Arrays;
 
 @Service
-public class PartyServiceImpl implements PartyService {
+public class DefaultPartyService implements PartyService {
 
     private HeroService heroService;
 
-    public PartyServiceImpl(HeroService heroService) {
+    public DefaultPartyService(HeroService heroService) {
         this.heroService = heroService;
     }
 

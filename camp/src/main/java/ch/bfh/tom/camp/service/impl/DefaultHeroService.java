@@ -1,4 +1,4 @@
-package ch.bfh.tom.camp.impl;
+package ch.bfh.tom.camp.service.impl;
 
 import ch.bfh.tom.camp.model.Hero;
 import ch.bfh.tom.camp.service.HeroService;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.Random;
 
 @Service
-public class HeroServiceImpl implements HeroService {
+public class DefaultHeroService implements HeroService {
 
     public Hero createHero(String name) {
         Hero hero = new Hero();
