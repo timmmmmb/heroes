@@ -8,5 +8,6 @@ public class Main {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ServiceConfiguration.class);
         PartyService partyService = context.getBean(PartyService.class);
         partyService.createParty("Team Tom");
+        context.close();
     }
 }
