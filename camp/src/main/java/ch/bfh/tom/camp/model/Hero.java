@@ -5,6 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.Objects;
 
 @Entity
 public class Hero {
@@ -61,5 +62,22 @@ public class Hero {
     @Override
     public String toString() {
         return this.name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Hero hero = (Hero) o;
+        return atk == hero.atk &&
+                def == hero.def &&
+                hp == hero.hp &&
+                id.equals(hero.id) &&
+                name.equals(hero.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, atk, def, hp);
     }
 }
