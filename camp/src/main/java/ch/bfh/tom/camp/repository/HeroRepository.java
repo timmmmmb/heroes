@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface HeroRepository extends CrudRepository<Hero, String> {
-    List<Hero> findByAtkGreaterThan(int atk);
+    long countByAtkGreaterThan(int atk);
 }

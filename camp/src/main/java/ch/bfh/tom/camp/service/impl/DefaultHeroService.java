@@ -33,11 +33,11 @@ public class DefaultHeroService implements HeroService {
         System.out.println("HP:   " + hero.getHp());
         System.out.println();
 
-        hero = this.heroRepository.save(hero);
+        String id = this.heroRepository.save(hero).getId();
 
-        System.out.println("Heroes with >50 ATK: " + heroRepository.findByAtkGreaterThan(50));
+        System.out.println("Heroes with >50 ATK: " + heroRepository.countByAtkGreaterThan(50));
         System.out.println();
 
-        return hero;
+        return heroRepository.findById(id).get();
     }
 }
