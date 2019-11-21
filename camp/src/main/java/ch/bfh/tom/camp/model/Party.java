@@ -1,6 +1,7 @@
 package ch.bfh.tom.camp.model;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +11,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-public class Party {
+public class Party extends RepresentationModel {
 
     @Id
     @GeneratedValue(generator = "system-uuid")
