@@ -17,11 +17,15 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @RequestMapping("/parties")
 public class PartyController {
 
-    @Autowired
-    private PartyService partyService;
+    private final PartyService partyService;
+
+    private final RepositoryEntityLinks repositoryEntityLinks;
 
     @Autowired
-    private RepositoryEntityLinks repositoryEntityLinks;
+    public PartyController(RepositoryEntityLinks repositoryEntityLinks, PartyService partyService) {
+        this.repositoryEntityLinks = repositoryEntityLinks;
+        this.partyService = partyService;
+    }
 
     @GetMapping
     public Party createParty(@RequestParam String name) {
@@ -31,7 +35,7 @@ public class PartyController {
 
         int heroCounter = 0;
         for (Hero hero : party.getMembers()) {
-            party.add(repositoryEntityLinks.linkToItemResource(Hero.class, hero.getId()).withRel("hero"+heroCounter));
+            party.add(repositoryEntityLinks.linkToItemResource(Hero.class, hero.getId()).withRel("hero" + heroCounter));
             heroCounter++;
         }
         return party;
