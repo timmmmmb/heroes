@@ -1,6 +1,7 @@
 package ch.bfh.tom.camp.service.impl;
 
 import ch.bfh.tom.camp.model.Hero;
+import ch.bfh.tom.camp.repository.HeroRepository;
 import ch.bfh.tom.camp.service.HeroService;
 import org.springframework.stereotype.Service;
 
@@ -8,6 +9,12 @@ import java.util.Random;
 
 @Service
 public class DefaultHeroService implements HeroService {
+
+    private HeroRepository heroRepository;
+
+    public DefaultHeroService(HeroRepository heroRepository) {
+        this.heroRepository = heroRepository;
+    }
 
     public Hero createHero(String name) {
         Hero hero = new Hero();
@@ -26,6 +33,11 @@ public class DefaultHeroService implements HeroService {
         System.out.println("HP:   " + hero.getHp());
         System.out.println();
 
-        return hero;
+        String id = this.heroRepository.save(hero).getId();
+
+        System.out.println("Heroes with >50 ATK: " + heroRepository.countByAtkGreaterThan(50));
+        System.out.println();
+
+        return heroRepository.findById(id).get();
     }
 }
