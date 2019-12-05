@@ -14,6 +14,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>camp</module>
+        <module>arena</module>
     </modules>
 
 </project>

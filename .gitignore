@@ -26,4 +26,4 @@
 hs_err_pid*
 
 # Database
-*.mv.db
+*.db
