@@ -1,4 +1,4 @@
-package ch.bfh.tom.camp.model;
+package ch.bfh.tom.arena.model;
 
 import org.hibernate.annotations.GenericGenerator;
 
