@@ -3,6 +3,7 @@ package ch.bfh.tom.camp.service.impl;
 import ch.bfh.tom.camp.model.Party;
 import ch.bfh.tom.camp.service.HeroService;
 import ch.bfh.tom.camp.service.PartyService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -10,11 +11,8 @@ import java.util.Arrays;
 @Service
 public class DefaultPartyService implements PartyService {
 
+    @Autowired
     private HeroService heroService;
-
-    public DefaultPartyService(HeroService heroService) {
-        this.heroService = heroService;
-    }
 
     public Party createParty(String name) {
         Party party = new Party();

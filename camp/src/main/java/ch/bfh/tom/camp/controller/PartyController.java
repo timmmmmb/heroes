@@ -17,17 +17,13 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @RequestMapping("/parties")
 public class PartyController {
 
-    private final PartyService partyService;
-
-    private final RepositoryEntityLinks repositoryEntityLinks;
+    @Autowired
+    private PartyService partyService;
 
     @Autowired
-    public PartyController(RepositoryEntityLinks repositoryEntityLinks, PartyService partyService) {
-        this.repositoryEntityLinks = repositoryEntityLinks;
-        this.partyService = partyService;
-    }
+    private RepositoryEntityLinks repositoryEntityLinks;
 
-    @GetMapping
+    @GetMapping(value = "/createParty")
     public Party createParty(@RequestParam String name) {
 
         Party party = partyService.createParty(name);
