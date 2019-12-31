@@ -29,7 +29,7 @@ In einer Shell oder einem Kommandofenster
 ### Ausführen
 
 Bei Allen Modulen die Starterklasse ausführen.
-Im Browser auf <http://localhost:<port>/> navigieren.
+Im Browser auf <http://localhost:[port]/> navigieren.
 Der Port wird in der Gebrauchsanleitung erläutert.
 
 ## Gebrauchsanleitung
