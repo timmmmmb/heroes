@@ -1,6 +1,7 @@
 package ch.bfh.tom.frontend.client;
 
 import ch.bfh.tom.frontend.client.impl.CampClientFallback;
+import ch.bfh.tom.frontend.model.Camp;
 import ch.bfh.tom.frontend.model.Party;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.hateoas.EntityModel;
@@ -12,4 +13,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public interface CampClient {
     @RequestMapping(method = RequestMethod.GET, value = "/parties/createParty?name={name}")
     EntityModel<Party> createParty(@PathVariable("name") String name);
+
+    @RequestMapping(method = RequestMethod.GET, value = "/parties")
+    EntityModel<Iterable<Party>> listParties();
+
+    @RequestMapping(method = RequestMethod.GET, value = "/camps")
+    EntityModel<Iterable<Camp>> listCamps();
 }

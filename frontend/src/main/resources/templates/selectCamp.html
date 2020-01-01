@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Select Camp</title>
+    <link rel="stylesheet" href="/bootstrap.min.css" media="screen"/>
+</head>
+<body>
+    <div class="container">
+        <h1 class="col-sm-12">Heroes</h1>
+        <select th:field="*{camps}">
+            <option th:each="camp : ${camps}" th:value="${camp.getName}" th:text="${camp.getName}"></option>
+        </select>
+
+        <form class="form-horizontal" th:action="@{/createCamp}" enctype="multipart/form-data" >
+
+            <span class="input-group-btn">
+                <button type="submit" class="btn btn-default">Promote Fight</button>
+            </span>
+        </form>
+    </div>
+</body>
+</html>

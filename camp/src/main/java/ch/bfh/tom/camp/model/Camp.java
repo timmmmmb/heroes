@@ -31,8 +31,8 @@ public class Camp extends RepresentationModel {
         return heroes;
     }
 
-    public void setHeroes(Set<Hero> heroes) {
-        this.heroes = heroes;
+    public void addHeroes(Set<Hero> heroes){
+        this.heroes.addAll(heroes);
     }
 
     public Party getParty() {

@@ -1,6 +1,6 @@
 package ch.bfh.tom.frontend.controller;
 
-import ch.bfh.tom.frontend.model.Party;
+import ch.bfh.tom.frontend.model.Camp;
 import ch.bfh.tom.frontend.service.FrontendService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,11 +11,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class FrontendController {
 
+	private Camp selectedCamp;
+
 	@Autowired
 	private FrontendService frontendService;
 
 	@RequestMapping("/")
 	public String home(Model model) {
+		if(selectedCamp == null){
+			Iterable<Camp> camps = frontendService.getCamps();
+			model.addAttribute("camps", camps);
+			return "selectCamp";
+		}
 		return "index";
 	}
 

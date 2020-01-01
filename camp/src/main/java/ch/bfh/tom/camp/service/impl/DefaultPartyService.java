@@ -1,7 +1,7 @@
 package ch.bfh.tom.camp.service.impl;
 
-import ch.bfh.tom.camp.model.Hero;
 import ch.bfh.tom.camp.model.Party;
+import ch.bfh.tom.camp.repository.PartyRepository;
 import ch.bfh.tom.camp.service.HeroService;
 import ch.bfh.tom.camp.service.PartyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +15,8 @@ public class DefaultPartyService implements PartyService {
 
     @Autowired
     private HeroService heroService;
+    @Autowired
+    private PartyRepository partyRepository;
 
     public Party createParty(String name) {
         Party party = new Party();
@@ -29,7 +31,7 @@ public class DefaultPartyService implements PartyService {
 
         System.out.println("Created new party ...");
         System.out.println("Name: " + party.getName());
-
+        partyRepository.save(party);
         return party;
     }
 }
