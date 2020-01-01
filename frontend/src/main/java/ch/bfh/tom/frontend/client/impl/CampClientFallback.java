@@ -19,8 +19,15 @@ public class CampClientFallback implements CampClient {
     }
 
     @Override
-    public EntityModel<Iterable<Party>> listParties() {
-        return null;
+    public EntityModel<Camp> createCamp(String name) {
+        System.out.println("Using Fallback");
+        return new EntityModel<>(new Camp());
+    }
+
+    @Override
+    public EntityModel<Party[]> listParties() {
+        System.out.println("Using Fallback");
+        return new EntityModel<>(new Party[0]);
     }
 
     @Override

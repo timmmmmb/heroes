@@ -14,8 +14,11 @@ public interface CampClient {
     @RequestMapping(method = RequestMethod.GET, value = "/parties/createParty?name={name}")
     EntityModel<Party> createParty(@PathVariable("name") String name);
 
+    @RequestMapping(method = RequestMethod.GET, value = "/camps/createCamp?name={name}")
+    EntityModel<Camp> createCamp(@PathVariable("name") String name);
+
     @RequestMapping(method = RequestMethod.GET, value = "/parties")
-    EntityModel<Iterable<Party>> listParties();
+    EntityModel<Party[]> listParties();
 
     @RequestMapping(method = RequestMethod.GET, value = "/camps")
     EntityModel<Camp[]> listCamps();

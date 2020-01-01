@@ -9,5 +9,6 @@ public interface FrontendService {
 
     String promoteFight();
     Party createParty(String name);
+    Camp createCamp(String name);
     Camp[] getCamps();
 }
