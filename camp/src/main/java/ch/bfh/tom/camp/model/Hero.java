@@ -55,10 +55,6 @@ public class Hero {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
     @Override
     public String toString() {
         return this.name;
@@ -72,7 +68,7 @@ public class Hero {
         return atk == hero.atk &&
                 def == hero.def &&
                 hp == hero.hp &&
-                id.equals(hero.id) &&
+                id == hero.id &&
                 name.equals(hero.name);
     }
 
