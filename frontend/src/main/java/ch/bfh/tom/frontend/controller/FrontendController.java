@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class FrontendController {
 
 	private Camp selectedCamp;
+	private String campName;
 
 	@Autowired
 	private FrontendService frontendService;
@@ -21,8 +22,15 @@ public class FrontendController {
 		if(selectedCamp == null){
 			Camp[] camps = frontendService.getCamps();
 			model.addAttribute("camps", camps);
+			model.addAttribute("campName", campName);
 			return "selectCamp";
 		}
+		return "index";
+	}
+
+	@RequestMapping("/createCamp")
+	public String createCamp(Model model, String campName) {
+		//TODO: create a new camp
 		return "index";
 	}
 
