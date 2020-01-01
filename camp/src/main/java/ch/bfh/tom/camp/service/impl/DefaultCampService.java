@@ -5,7 +5,9 @@ import ch.bfh.tom.camp.model.Party;
 import ch.bfh.tom.camp.service.CampService;
 import ch.bfh.tom.camp.service.PartyService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class DefaultCampService implements CampService {
 
     @Autowired

@@ -1,5 +1,6 @@
 package ch.bfh.tom.camp;
 
+import ch.bfh.tom.camp.service.CampService;
 import ch.bfh.tom.camp.service.PartyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -9,15 +10,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class CampApplicationRunner implements ApplicationRunner {
 
-    private PartyService partyService;
+    private CampService campService;
 
     @Autowired
-    public void context(PartyService partyService) {
-        this.partyService = partyService;
+    public void context(CampService campService) {
+        this.campService = campService;
     }
 
     @Override
     public void run(ApplicationArguments args) {
-        partyService.createParty("Team Tom");
+        campService.createCamp("Team Tom");
+        campService.createCamp("Tom Team");
     }
 }
