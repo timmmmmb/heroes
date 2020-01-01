@@ -19,7 +19,7 @@ public class FrontendController {
 	@RequestMapping("/")
 	public String home(Model model) {
 		if(selectedCamp == null){
-			Iterable<Camp> camps = frontendService.getCamps();
+			Camp[] camps = frontendService.getCamps();
 			model.addAttribute("camps", camps);
 			return "selectCamp";
 		}

@@ -1,13 +1,12 @@
 package ch.bfh.tom.frontend.model;
 
-import org.hibernate.annotations.GenericGenerator;
+import org.springframework.hateoas.RepresentationModel;
 
-import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Camp {
-    private int id;
+public class Camp extends RepresentationModel {
+    private String id;
     private String name;
     private Set<Hero> heroes = new HashSet<>();
     private Party party;
@@ -36,7 +35,7 @@ public class Camp {
         this.party = party;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 }

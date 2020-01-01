@@ -2,13 +2,13 @@ package ch.bfh.tom.frontend.model;
 
 import org.springframework.hateoas.RepresentationModel;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Party extends RepresentationModel {
-
-    private int id;
+    private String id;
     private String name;
-    private List<Hero> members;
+    private Set<Hero> members;
 
     public String getName() {
         return name;
@@ -18,15 +18,15 @@ public class Party extends RepresentationModel {
         this.name = name;
     }
 
-    public List<Hero> getMembers() {
+    public Set<Hero> getMembers() {
         return members;
     }
 
-    public void setMembers(List<Hero> members) {
+    public void setMembers(HashSet<Hero> members) {
         this.members = members;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 }

@@ -24,7 +24,8 @@ public class CampClientFallback implements CampClient {
     }
 
     @Override
-    public EntityModel<Iterable<Camp>> listCamps() {
-        return null;
+    public EntityModel<Camp[]> listCamps() {
+        System.out.println("Using Fallback");
+        return new EntityModel<>(new Camp[0]);
     }
 }

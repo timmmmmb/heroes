@@ -2,7 +2,7 @@ package ch.bfh.tom.frontend.model;
 
 public class Hero {
 
-    private int id;
+    private String id;
     private String name;
     private int atk;
     private int def;
@@ -40,7 +40,7 @@ public class Hero {
         this.hp = hp;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 }

@@ -29,7 +29,7 @@ public class DefaultFrontendService implements FrontendService {
     }
 
     @Override
-    public Iterable<Camp> getCamps() {
+    public Camp[] getCamps() {
         return campClient.listCamps().getContent();
     }
 }
