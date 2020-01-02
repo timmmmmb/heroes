@@ -1,14 +1,22 @@
 package ch.bfh.tom.frontend.model;
 
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.hateoas.RepresentationModel;
 
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+@Entity
 public class Camp extends RepresentationModel {
+    @Id
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid2")
     private String id;
     private String name;
+    @OneToMany
     private Set<Hero> heroes = new HashSet<>();
+    @OneToOne
     private Party party;
 
     public String getName() {
@@ -23,8 +31,8 @@ public class Camp extends RepresentationModel {
         return heroes;
     }
 
-    public void setHeroes(Set<Hero> heroes) {
-        this.heroes = heroes;
+    public void addHeroes(Set<Hero> heroes){
+        this.heroes.addAll(heroes);
     }
 
     public Party getParty() {

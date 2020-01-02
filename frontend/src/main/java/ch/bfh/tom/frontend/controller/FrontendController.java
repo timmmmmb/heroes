@@ -1,13 +1,11 @@
 package ch.bfh.tom.frontend.controller;
 
 import ch.bfh.tom.frontend.model.Camp;
-import ch.bfh.tom.frontend.model.Party;
 import ch.bfh.tom.frontend.service.FrontendService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class FrontendController {
@@ -18,14 +16,19 @@ public class FrontendController {
 	private FrontendService frontendService;
 
 	@GetMapping("/")
-	public String home(Model model, String campName) {
+	public String home(Model model) {
 		if(selectedCamp == null){
-			Camp[] camps = frontendService.getCamps();
-			model.addAttribute("camps", camps);
-			model.addAttribute("campName", campName);
-			return "selectCamp";
+			return "redirect:selectCamp";
 		}
 		return "index";
+	}
+
+	@GetMapping("/selectCamp")
+	public String selectCamp(Model model, String campName) {
+		Camp[] camps = frontendService.getCamps();
+		model.addAttribute("camps", camps);
+		model.addAttribute("campName", campName);
+		return "selectCamp";
 	}
 
 	@GetMapping("/createCamp")
@@ -42,5 +45,11 @@ public class FrontendController {
 		/*Party party = frontendService.createParty("Party");
 		model.addAttribute("result", party.getName());*/
 		return "index";
+	}
+
+	@GetMapping(value = "/changeCamp")
+	public String changeCamp(Model model) {
+		selectedCamp = null;
+		return "redirect:selectCamp";
 	}
 }

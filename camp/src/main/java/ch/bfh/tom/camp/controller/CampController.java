@@ -9,6 +9,9 @@ import org.springframework.data.rest.webmvc.support.RepositoryEntityLinks;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
@@ -27,8 +30,9 @@ public class CampController {
 
     @GetMapping
     public @ResponseBody
-    Iterable<Camp> list() {
-        return campRepository.findAll();
+    Camp[] list() {
+        ArrayList<Camp> camps = (ArrayList<Camp>) campRepository.findAll();
+        return camps.toArray(new Camp[0]);
     }
 
     @GetMapping("/{id}")
