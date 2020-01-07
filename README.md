@@ -36,4 +36,12 @@ Der Port wird in der Gebrauchsanleitung erläutert.
 
 | Service | Port | Beschreibung |
 | --- | --- | --- |
+| Registry | 1111 | Stellt Eureka zur verfügung|
 | Camp | 2222 | Erstellt Heroes und Parties |
+| Arena | 3333 | Führt die Kämpfe durch |
+| Promoter | 4444 | Teilt die Resultate von Kämpfen mit |
+| Frontend | 8080 | Frontend welches den Usern zugriff zum Spiel gewährt |
+
+Microservice Architecture
+![Alt text](./resources/Microservice Architecture.svg)
+<img src="./resources/Microservice Architecture.svg">
