@@ -43,5 +43,4 @@ Der Port wird in der Gebrauchsanleitung erläutert.
 | Frontend | 8080 | Frontend welches den Usern zugriff zum Spiel gewährt |
 
 Microservice Architecture
-![Alt text](./resources/Microservice Architecture.svg)
 <img src="./resources/Microservice Architecture.svg">
