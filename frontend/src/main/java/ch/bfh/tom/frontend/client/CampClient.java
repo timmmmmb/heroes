@@ -18,8 +18,8 @@ public interface CampClient {
     EntityModel<Camp> createCamp(@PathVariable("name") String name);
 
     @RequestMapping(method = RequestMethod.GET, value = "/parties")
-    EntityModel<Party[]> listParties();
+    Party[] listParties();
 
     @RequestMapping(method = RequestMethod.GET, value = "/camps")
-    EntityModel<Camp[]> listCamps();
+    Camp[] listCamps();
 }

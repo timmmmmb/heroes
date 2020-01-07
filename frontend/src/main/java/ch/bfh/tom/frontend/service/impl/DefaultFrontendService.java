@@ -35,6 +35,6 @@ public class DefaultFrontendService implements FrontendService {
 
     @Override
     public Camp[] getCamps() {
-        return campClient.listCamps().getContent();
+        return campClient.listCamps();
     }
 }

@@ -8,16 +8,24 @@
 <body>
     <div class="container">
         <h1 class="col-sm-12">Heroes</h1>
-        <select th:field="*{camps}">
-            <option th:each="camp : ${camps}" th:value="${camp.getName}" th:text="${camp.getName}"></option>
-        </select>
-
-        <form class="form-horizontal" th:action="@{/createCamp}" enctype="multipart/form-data" >
-            <!--<input type="text" th:field="*{campName}" />-->
-            <span class="input-group-btn">
-                <button type="submit" class="btn btn-default">Create Camp</button>
-            </span>
-        </form>
+        <div>
+            <form class="form-horizontal" th:action="@{/selectCamp}" enctype="multipart/form-data" >
+                <select th:field="*{camps}">
+                    <option th:each="camp : ${camps}" th:value="${camp.name}" th:text="${camp.name}"></option>
+                </select>
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-default">Select Camp</button>
+                </span>
+            </form>
+        </div>
+        <div>
+            <form class="form-horizontal" th:action="@{/createCamp}" enctype="multipart/form-data" >
+                <!--<input type="text" th:field="*{campName}" />-->
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-default">Create Camp</button>
+                </span>
+            </form>
+        </div>
     </div>
 </body>
 </html>
