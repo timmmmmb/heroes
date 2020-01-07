@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class FrontendController {
 
 	private Camp selectedCamp;
+
 
 	@Autowired
 	private FrontendService frontendService;
@@ -18,32 +20,43 @@ public class FrontendController {
 	@GetMapping("/")
 	public String home(Model model) {
 		if(selectedCamp == null){
-			return "redirect:selectCamp";
+			return "redirect:campForm";
 		}
+		model.addAttribute("selectedCamp", selectedCamp);
 		return "index";
+	}
+
+	@GetMapping("/index")
+	public String index(Model model) {
+		return "redirect:/";
+	}
+
+	@GetMapping("/campForm")
+	public String campForm(Model model) {
+		Camp[] camps = frontendService.getCamps();
+		model.addAttribute("camps", camps);
+		return "campForm";
 	}
 
 	@GetMapping("/selectCamp")
-	public String selectCamp(Model model, String campName) {
-		Camp[] camps = frontendService.getCamps();
-		model.addAttribute("camps", camps);
-		model.addAttribute("campName", campName);
-		return "selectCamp";
+	public String selectCamp(Model model, @RequestParam String campID) {
+		if(campID.equals(""))return "redirect:campForm";
+		selectedCamp = frontendService.getCamp(campID);
+		return "redirect:index";
 	}
 
 	@GetMapping("/createCamp")
-	public String createCamp(Model model, String campName) {
-		selectedCamp = frontendService.createCamp(campName==null?"Name":campName);
+	public String createCamp(Model model, @RequestParam String campName) {
+		selectedCamp = frontendService.createCamp(campName==null||campName.equals("")?"Name":campName);
 		model.addAttribute("selectedCamp", selectedCamp);
-		return "index";
+		return "redirect:index";
 	}
 
 	@GetMapping(value = "/battle")
 	public String promoteFight(Model model) {
 		String result = frontendService.promoteFight();
+		model.addAttribute("selectedCamp", selectedCamp);
 		model.addAttribute("result", result);
-		/*Party party = frontendService.createParty("Party");
-		model.addAttribute("result", party.getName());*/
 		return "index";
 	}
 

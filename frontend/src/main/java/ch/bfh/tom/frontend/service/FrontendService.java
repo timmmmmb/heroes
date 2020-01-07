@@ -11,4 +11,5 @@ public interface FrontendService {
     Party createParty(String name);
     Camp createCamp(String name);
     Camp[] getCamps();
+    Camp getCamp(String id);
 }
