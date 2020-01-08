@@ -17,13 +17,24 @@
             </form>
 
             <span th:text="${result}"/>
-        <br>
+            <br>
             <form class="form-horizontal" th:action="@{/campForm}" enctype="multipart/form-data" >
                 <span class="input-group-btn">
                     <button type="submit" class="btn btn-default">Change Camp</button>
                 </span>
             </form>
+            <br/>
+            <div>
+                <h2>Manage Heroes</h2>
+                <form class="form-horizontal" th:action="@{/manageHeroes}" enctype="multipart/form-data" >
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-default">Manage Heroes</button>
+                </span>
+                </form>
+            </div>
 
         </div>
+
+
     </body>
 </html>

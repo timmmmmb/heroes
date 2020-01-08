@@ -40,4 +40,9 @@ public class CampClientFallback implements CampClient {
     public Camp getCamp(String id) {
         return null;
     }
+
+    @Override
+    public EntityModel<Camp> addHero(String heroName, String campID) {
+        return null;
+    }
 }

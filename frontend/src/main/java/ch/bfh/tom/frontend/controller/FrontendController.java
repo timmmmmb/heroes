@@ -65,4 +65,24 @@ public class FrontendController {
 		selectedCamp = null;
 		return "redirect:selectCamp";
 	}
+
+
+	@GetMapping(value = "/manageHeroes")
+	public String manageHeroes(Model model) {
+		if(selectedCamp == null){
+			return "redirect:campForm";
+		}
+		model.addAttribute("selectedCamp", selectedCamp);
+		return "heroManager";
+	}
+
+	@GetMapping(value = "/addHero")
+	public String addHero(Model model, @RequestParam String heroName) {
+		if(selectedCamp == null){
+			return "redirect:campForm";
+		}
+
+		model.addAttribute("selectedCamp", selectedCamp);
+		return "heroManager";
+	}
 }

@@ -25,4 +25,7 @@ public interface CampClient {
 
     @RequestMapping(method = RequestMethod.GET, value = "/camps/{id}")
     Camp getCamp(@PathVariable("id") String id);
+
+    @RequestMapping(method = RequestMethod.GET, value = "/camps/addHero?name={name}&campID={campID}")
+    EntityModel<Camp> addHero(@PathVariable("name") String heroName, @PathVariable("campID") String campID);
 }

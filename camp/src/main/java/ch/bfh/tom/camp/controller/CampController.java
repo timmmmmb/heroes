@@ -4,6 +4,7 @@ import ch.bfh.tom.camp.model.Camp;
 import ch.bfh.tom.camp.model.Hero;
 import ch.bfh.tom.camp.repository.CampRepository;
 import ch.bfh.tom.camp.service.CampService;
+import ch.bfh.tom.camp.service.HeroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.support.RepositoryEntityLinks;
 import org.springframework.http.HttpStatus;
@@ -24,6 +25,9 @@ public class CampController {
 
     @Autowired
     private CampService campService;
+
+    @Autowired
+    private HeroService heroService;
 
     @Autowired
     private RepositoryEntityLinks repositoryEntityLinks;
@@ -66,5 +70,16 @@ public class CampController {
         }
         return camp;
     }
+
+    @GetMapping(value = "/addHero")
+    public Camp addHero(@RequestParam String name, @RequestParam String campID) {
+        Camp camp = campRepository.findById(campID).get();
+
+        Hero hero = heroService.createHero(name);
+        camp.add(repositoryEntityLinks.linkToItemResource(Hero.class, hero.getId()).withRel("hero" + hero.getId()));
+
+        return camp;
+    }
+
 
 }

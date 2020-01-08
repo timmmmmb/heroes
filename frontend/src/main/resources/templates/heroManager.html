@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>home</title>
+        <link rel="stylesheet" href="/bootstrap.min.css" media="screen"/>
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="col-sm-12">Heroes</h1>
+            <p>Your Camp: <span th:text="${selectedCamp.name}"/></p>
+
+            <p>Heroes: </p>
+            <p th:each="hero : ${selectedCamp.heroes}" th:text="${hero.name}"></p>
+
+            <form class="form-horizontal" th:action="@{/addHero}" enctype="multipart/form-data" >
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-default">new Hero</button>
+                </span>
+            </form>
+
+        </div>
+    </body>
+</html>
