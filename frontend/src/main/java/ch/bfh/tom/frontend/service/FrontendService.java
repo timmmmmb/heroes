@@ -13,4 +13,6 @@ public interface FrontendService {
     Camp[] getCamps();
     Camp getCamp(String id);
     Camp addHero(String heroName, String campID);
+    Camp removeHeroFromParty(String heroID, String campID);
+    Camp addHeroToParty(String heroID, String campID);
 }

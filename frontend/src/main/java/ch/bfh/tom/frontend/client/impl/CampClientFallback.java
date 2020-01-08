@@ -38,11 +38,25 @@ public class CampClientFallback implements CampClient {
 
     @Override
     public Camp getCamp(String id) {
+        System.out.println("Using Fallback");
         return null;
     }
 
     @Override
     public EntityModel<Camp> addHero(String heroName, String campID) {
+        System.out.println("Using Fallback");
         return null;
+    }
+
+    @Override
+    public EntityModel<Camp> addHeroToParty(String heroID, String campID) {
+        System.out.println("Using Fallback");
+        return new EntityModel<>(new Camp());
+    }
+
+    @Override
+    public EntityModel<Camp> removeHeroFromParty(String heroID, String campID) {
+        System.out.println("Using Fallback");
+        return new EntityModel<>(new Camp());
     }
 }

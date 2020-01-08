@@ -15,6 +15,12 @@
                 <p>Party: <span th:text="${selectedCamp.party.members.size()}+'\4'"></span></p>
                 <div th:each="hero : ${selectedCamp.party.members}" style="border: 2px solid #0d1318; margin: 2px" class="col-sm-4">
                     <!--TODO: create here space for the images that will come-->
+                    <form class="form-horizontal" th:action="@{/removeHeroFromParty}" enctype="multipart/form-data" >
+                        <input type="hidden" th:value="${hero.id}" name="heroID" required/>
+                        <span class="input-group-btn">
+                        <button type="submit" class="btn btn-default">Remove</button>
+                        </span>
+                    </form>
                     <h3 th:text="${hero.name}"></h3>
                     <p style="margin-bottom: 1px">HP:
                     <div class="progress" style="margin-bottom: 2px">
@@ -37,6 +43,12 @@
                 <p>Heroes: <span th:text="${heroesNotInParty.size()}"></span></p>
                 <div th:each="hero : ${heroesNotInParty}" style="border: 2px solid #0d1318; margin: 2px" class="col-sm-4">
                     <!--TODO: create here space for the images that will come-->
+                    <form class="form-horizontal" th:action="@{/addHeroToParty}" enctype="multipart/form-data" >
+                        <input type="hidden" th:value="${hero.id}" name="heroID" required/>
+                        <span class="input-group-btn">
+                        <button type="submit" class="btn btn-default">Add</button>
+                        </span>
+                    </form>
                     <h3 th:text="${hero.name}"></h3>
                     <p style="margin-bottom: 1px">HP:
                     <div class="progress" style="margin-bottom: 2px">

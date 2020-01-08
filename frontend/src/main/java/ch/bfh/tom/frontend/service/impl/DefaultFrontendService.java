@@ -48,4 +48,14 @@ public class DefaultFrontendService implements FrontendService {
     public Camp addHero(String heroName, String campID){
         return campClient.addHero(heroName, campID).getContent();
     }
+
+    @Override
+    public Camp removeHeroFromParty(String heroID, String id) {
+        return campClient.removeHeroFromParty(heroID, id).getContent();
+    }
+
+    @Override
+    public Camp addHeroToParty(String heroID, String campID) {
+        return campClient.addHeroToParty(heroID, campID).getContent();
+    }
 }

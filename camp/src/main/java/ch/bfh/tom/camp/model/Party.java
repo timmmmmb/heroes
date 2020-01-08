@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -45,6 +44,10 @@ public class Party extends RepresentationModel {
         this.members.add(hero);
     }
 
+    public void removeMember(Hero hero){
+        this.members.remove(hero);
+    }
+
     public String getId() {
         return id;
     }
@@ -59,7 +62,7 @@ public class Party extends RepresentationModel {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Party party = (Party) o;
-        return id == party.id &&
+        return id.equals(party.id) &&
                 name.equals(party.name) &&
                 members.equals(party.members);
     }

@@ -92,9 +92,35 @@ public class FrontendController {
 			return "redirect:campForm";
 		}
 		if(heroName.equals("")){
-			return "redirect:heroManager";
+			return "redirect:manageHeroes";
 		}
 		selectedCamp = frontendService.addHero(heroName, selectedCamp.getId());
-		return "redirect:heroManager";
+		return "redirect:manageHeroes";
+	}
+
+	@GetMapping(value = "/addHeroToParty")
+	public String addHeroToParty(Model model, @RequestParam String heroID) {
+		if(selectedCamp == null){
+			return "redirect:campForm";
+		}
+		if(heroID.equals("")){
+			return "redirect:manageHeroes";
+		}
+
+		selectedCamp = frontendService.addHeroToParty(heroID, selectedCamp.getId());
+		return "redirect:manageHeroes";
+	}
+
+	@GetMapping(value = "/removeHeroFromParty")
+	public String removeHeroFromParty(Model model, @RequestParam String heroID) {
+		if(selectedCamp == null){
+			return "redirect:campForm";
+		}
+		if(heroID.equals("")){
+			return "redirect:manageHeroes";
+		}
+		selectedCamp = frontendService.removeHeroFromParty(heroID, selectedCamp.getId());
+
+		return "redirect:manageHeroes";
 	}
 }

@@ -3,6 +3,7 @@ package ch.bfh.tom.camp.controller;
 import ch.bfh.tom.camp.model.Camp;
 import ch.bfh.tom.camp.model.Hero;
 import ch.bfh.tom.camp.repository.CampRepository;
+import ch.bfh.tom.camp.repository.HeroRepository;
 import ch.bfh.tom.camp.service.CampService;
 import ch.bfh.tom.camp.service.HeroService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,8 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 public class CampController {
     @Autowired
     private CampRepository campRepository;
+    @Autowired
+    private HeroRepository heroRepository;
 
 
     @Autowired
@@ -82,5 +85,22 @@ public class CampController {
         return camp;
     }
 
+    @GetMapping(value = "/addHeroToParty")
+    public Camp addHeroToParty(@RequestParam String heroID, @RequestParam String campID) {
+        Camp camp = campRepository.findById(campID).get();
+        Hero hero = heroRepository.findById(heroID).get();
+        camp.getParty().addMember(hero);
+        camp = campRepository.save(camp);
+        return camp;
+    }
+
+    @GetMapping(value = "/removeHeroFromParty")
+    public Camp removeHeroFromParty(@RequestParam String heroID, @RequestParam String campID) {
+        Camp camp = campRepository.findById(campID).get();
+        Hero hero = heroRepository.findById(heroID).get();
+        camp.getParty().removeMember(hero);
+        camp = campRepository.save(camp);
+        return camp;
+    }
 
 }
