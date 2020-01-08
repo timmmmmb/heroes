@@ -22,7 +22,7 @@
         <div>
             <h2>Create New Camp</h2>
             <form class="form-horizontal" th:action="@{/createCamp}" enctype="multipart/form-data" >
-                <p>Name: <input type="text" th:value="${campName}" name="campName"/></p>
+                <p>Name: <input type="text" th:value="${campName}" name="campName" required/></p>
                 <span class="input-group-btn">
                     <button type="submit" class="btn btn-default">Create Camp</button>
                 </span>

@@ -8,16 +8,45 @@
     <body>
         <div class="container">
             <h1 class="col-sm-12">Heroes</h1>
-            <p>Your Camp: <span th:text="${selectedCamp.name}"/></p>
+            <p>Your Camp: <span th:text="${selectedCamp.name}"></span></p>
 
             <p>Heroes: </p>
-            <p th:each="hero : ${selectedCamp.heroes}" th:text="${hero.name}"></p>
+            <div class="col-sm-8">
+                <div th:each="hero : ${selectedCamp.heroes}" style="border: 2px solid #0d1318; margin: 2px" class="col-sm-4">
+                    <!--TODO: create here space for the images that will come-->
+                    <h3 th:text="${hero.name}"></h3>
+                    <p style="margin-bottom: 1px">HP:
+                    <div class="progress" style="margin-bottom: 2px">
+                        <div class="progress-bar" role="progressbar" th:style="'width:'+${hero.hp}+'%; background-color:green'" th:aria-valuenow="${hero.hp}" aria-valuemin="0" aria-valuemax="100" th:text="${hero.hp}"></div>
+                    </div>
+                    </p>
+                    <p style="margin-bottom: 1px">Def:
+                    <div class="progress" style="margin-bottom: 2px">
+                        <div class="progress-bar" role="progressbar" th:style="'width:'+${hero.def}+'%; background-color:blue'" th:aria-valuenow="${hero.def}" aria-valuemin="0" aria-valuemax="100" th:text="${hero.def}"></div>
+                    </div>
+                    </p>
+                    <p style="margin-bottom: 1px">Atk:
+                    <div class="progress" style="margin-bottom: 2px">
+                        <div class="progress-bar" role="progressbar" th:style="'width:'+${hero.atk}+'%; background-color:red'" th:aria-valuenow="${hero.atk}" aria-valuemin="0" aria-valuemax="100" th:text="${hero.atk}"></div>
+                    </div>
+                    </p>
+                </div>
+            </div>
 
-            <form class="form-horizontal" th:action="@{/addHero}" enctype="multipart/form-data" >
-                <span class="input-group-btn">
-                    <button type="submit" class="btn btn-default">new Hero</button>
-                </span>
-            </form>
+            <div class="col-sm-3">
+                <form class="form-horizontal" th:action="@{/addHero}" enctype="multipart/form-data" >
+                    <p>Name: <input type="text" th:value="${heroName}" name="heroName" required/></p>
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-default">new Hero</button>
+                    </span>
+                </form>
+                <br>
+                <form class="form-horizontal" th:action="@{/}" enctype="multipart/form-data" >
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-default">Back</button>
+                    </span>
+                </form>
+            </div>
 
         </div>
     </body>

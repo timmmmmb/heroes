@@ -76,8 +76,9 @@ public class CampController {
         Camp camp = campRepository.findById(campID).get();
 
         Hero hero = heroService.createHero(name);
+        camp.addHeroe(hero);
         camp.add(repositoryEntityLinks.linkToItemResource(Hero.class, hero.getId()).withRel("hero" + hero.getId()));
-
+        camp = campRepository.save(camp);
         return camp;
     }
 

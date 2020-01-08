@@ -47,7 +47,11 @@ public class FrontendController {
 
 	@GetMapping("/createCamp")
 	public String createCamp(Model model, @RequestParam String campName) {
-		selectedCamp = frontendService.createCamp(campName==null||campName.equals("")?"Name":campName);
+
+		if(campName.equals("")){
+			return "campForm";
+		}
+		selectedCamp = frontendService.createCamp(campName);
 		model.addAttribute("selectedCamp", selectedCamp);
 		return "redirect:index";
 	}
@@ -81,7 +85,10 @@ public class FrontendController {
 		if(selectedCamp == null){
 			return "redirect:campForm";
 		}
-
+		if(heroName.equals("")){
+			return "heroManager";
+		}
+		selectedCamp = frontendService.addHero(heroName, selectedCamp.getId());
 		model.addAttribute("selectedCamp", selectedCamp);
 		return "heroManager";
 	}

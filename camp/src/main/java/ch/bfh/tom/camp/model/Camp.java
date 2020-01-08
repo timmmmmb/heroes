@@ -46,4 +46,8 @@ public class Camp extends RepresentationModel {
     public String getId() {
         return id;
     }
+
+    public void addHeroe(Hero hero) {
+        heroes.add(hero);
+    }
 }
