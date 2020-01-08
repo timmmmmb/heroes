@@ -68,7 +68,7 @@ public class Hero {
         return atk == hero.atk &&
                 def == hero.def &&
                 hp == hero.hp &&
-                id == hero.id &&
+                id.equals(hero.id) &&
                 name.equals(hero.name);
     }
 

@@ -1,12 +1,15 @@
 package ch.bfh.tom.frontend.controller;
 
 import ch.bfh.tom.frontend.model.Camp;
+import ch.bfh.tom.frontend.model.Hero;
 import ch.bfh.tom.frontend.service.FrontendService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Set;
 
 @Controller
 public class FrontendController {
@@ -77,6 +80,9 @@ public class FrontendController {
 			return "redirect:campForm";
 		}
 		model.addAttribute("selectedCamp", selectedCamp);
+		Set<Hero> heroesNotInParty = selectedCamp.getHeroes();
+		heroesNotInParty.removeAll(selectedCamp.getParty().getMembers());
+		model.addAttribute("heroesNotInParty", heroesNotInParty);
 		return "heroManager";
 	}
 
@@ -86,10 +92,9 @@ public class FrontendController {
 			return "redirect:campForm";
 		}
 		if(heroName.equals("")){
-			return "heroManager";
+			return "redirect:heroManager";
 		}
 		selectedCamp = frontendService.addHero(heroName, selectedCamp.getId());
-		model.addAttribute("selectedCamp", selectedCamp);
-		return "heroManager";
+		return "redirect:heroManager";
 	}
 }
