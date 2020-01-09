@@ -18,6 +18,7 @@
         <module>arena</module>
         <module>registry</module>
         <module>frontend</module>
+        <module>shop</module>
     </modules>
 
     <properties>
