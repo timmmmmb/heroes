@@ -40,6 +40,7 @@ Der Port wird in der Gebrauchsanleitung erläutert.
 | Camp | 2222 | Erstellt Heroes und Parties |
 | Arena | 3333 | Führt die Kämpfe durch |
 | Promoter | 4444 | Teilt die Resultate von Kämpfen mit |
+| Shop | 5555 | Stellt Items zur Verfügung |
 | Frontend | 8080 | Frontend welches den Usern zugriff zum Spiel gewährt |
 
 Microservice Architecture
