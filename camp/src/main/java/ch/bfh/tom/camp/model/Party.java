@@ -57,6 +57,12 @@ public class Party extends RepresentationModel {
         return this.name;
     }
 
+    public int getStrength(){
+        return members.stream()
+                .mapToInt(x -> (int) (x.getAtk()+x.getDef()+x.getHp()))
+                .sum();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

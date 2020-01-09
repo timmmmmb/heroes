@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Random;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
@@ -101,6 +103,31 @@ public class CampController {
         camp.getParty().removeMember(hero);
         camp = campRepository.save(camp);
         return camp;
+    }
+
+    @GetMapping(value = "/findOpponent")
+    public Camp findOpponent(@RequestParam String campID) {
+        Camp camp = campRepository.findById(campID).get();
+        int strength = camp.getParty().getStrength();
+        ArrayList<Camp> camps = (ArrayList<Camp>) campRepository.findAll();
+        camps.remove(camp);
+        camps.sort(new SortByStrength(camp));
+        int position = new Random().nextInt(Math.min(camps.size(), 10));
+        return camps.get(position);
+    }
+
+    static class SortByStrength implements Comparator<Camp>
+    {
+        private Camp camp;
+        SortByStrength(Camp camp){
+            this.camp = camp;
+        }
+        // Used for sorting in ascending order of
+        // roll number
+        public int compare(Camp a, Camp b)
+        {
+            return Math.abs(a.getParty().getStrength()-camp.getParty().getStrength())-Math.abs(b.getParty().getStrength()-camp.getParty().getStrength());
+        }
     }
 
 }
