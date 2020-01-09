@@ -1,9 +1,13 @@
-package ch.bfh.tom.camp.model;
+package ch.bfh.tom.promoter.model;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.hateoas.RepresentationModel;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;

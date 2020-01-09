@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class PromoterClientFallback implements PromoterClient {
     @Override
-    public String promoteFight() {
+    public String promoteFight(String campID) {
         System.out.println("Using Fallback");
         return "No fight today";
     }

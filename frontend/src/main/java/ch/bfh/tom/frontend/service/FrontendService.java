@@ -7,7 +7,7 @@ import java.util.Collection;
 
 public interface FrontendService {
 
-    String promoteFight();
+    String promoteFight(String campID);
     Party createParty(String name);
     Camp createCamp(String name);
     Camp[] getCamps();

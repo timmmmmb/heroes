@@ -61,7 +61,7 @@ public class FrontendController {
 
 	@GetMapping(value = "/battle")
 	public String promoteFight(Model model) {
-		String result = frontendService.promoteFight();
+		String result = frontendService.promoteFight(selectedCamp.getId());
 		model.addAttribute("selectedCamp", selectedCamp);
 		model.addAttribute("result", result);
 		return "index";

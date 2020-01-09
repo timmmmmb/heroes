@@ -9,9 +9,17 @@ import ch.bfh.tom.camp.service.HeroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.support.RepositoryEntityLinks;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Random;
@@ -108,7 +116,6 @@ public class CampController {
     @GetMapping(value = "/findOpponent")
     public Camp findOpponent(@RequestParam String campID) {
         Camp camp = campRepository.findById(campID).get();
-        int strength = camp.getParty().getStrength();
         ArrayList<Camp> camps = (ArrayList<Camp>) campRepository.findAll();
         camps.remove(camp);
         camps.sort(new SortByStrength(camp));
@@ -122,10 +129,7 @@ public class CampController {
         SortByStrength(Camp camp){
             this.camp = camp;
         }
-        // Used for sorting in ascending order of
-        // roll number
-        public int compare(Camp a, Camp b)
-        {
+        public int compare(Camp a, Camp b){
             return Math.abs(a.getParty().getStrength()-camp.getParty().getStrength())-Math.abs(b.getParty().getStrength()-camp.getParty().getStrength());
         }
     }

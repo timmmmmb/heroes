@@ -19,8 +19,8 @@ public class DefaultFrontendService implements FrontendService {
     private CampClient campClient;
 
     @Override
-    public String promoteFight() {
-        return promoterClient.promoteFight();
+    public String promoteFight(String campID) {
+        return promoterClient.promoteFight(campID);
     }
 
     @Override
