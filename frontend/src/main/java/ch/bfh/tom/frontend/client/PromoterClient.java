@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @FeignClient(value = "promoter-service", fallback = PromoterClientFallback.class)
 public interface PromoterClient {
-    @RequestMapping(method = RequestMethod.GET, value = "/promoteFight/campID={campID}")
+    @RequestMapping(method = RequestMethod.GET, value = "/promoteFight?campID={campID}")
     String promoteFight(@PathVariable("campID") String campID);
 }
