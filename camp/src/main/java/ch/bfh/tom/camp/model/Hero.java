@@ -18,6 +18,7 @@ public class Hero {
     private int atk;
     private int def;
     private double hp;
+    private String imagePath;
 
     public String getName() {
         return name;
@@ -53,6 +54,14 @@ public class Hero {
 
     public String getId() {
         return id;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 
     @Override

@@ -1,11 +1,13 @@
 package ch.bfh.tom.camp.service.impl;
 
+import ch.bfh.tom.camp.CampApplicationRunner;
 import ch.bfh.tom.camp.model.Hero;
 import ch.bfh.tom.camp.repository.HeroRepository;
 import ch.bfh.tom.camp.service.HeroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 @Service
@@ -22,6 +24,8 @@ public class DefaultHeroService implements HeroService {
         hero.setAtk(random.nextInt(100) + 1);
         hero.setDef(random.nextInt(100) + 1);
         hero.setHp(100);
+        ArrayList<String> images = CampApplicationRunner.getImages();
+        hero.setImagePath(images.get(random.nextInt(images.size())));
 
         System.out.println("Created new hero ...");
         System.out.println("Name: " + hero.getName());
