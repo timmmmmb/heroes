@@ -21,6 +21,7 @@ public class CampApplicationRunner implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) {
         images.add("/images/heroProfiles/testHero.png");
+        images.add("/images/heroProfiles/ironMan.png");
 
         campService.createCamp("Team Tom");
         campService.createCamp("Tom Team");

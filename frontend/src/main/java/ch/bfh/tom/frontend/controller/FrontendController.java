@@ -81,9 +81,11 @@ public class FrontendController {
 		if(selectedCamp == null){
 			return "redirect:campForm";
 		}
+		for(Hero hero:selectedCamp.getHeroes()){
+			String image = new String(frontendService.getHeroImage(hero.getId()));
+			hero.setImage(image);
+		}
 		model.addAttribute("selectedCamp", selectedCamp);
-		String image = new String(frontendService.getHeroImage(selectedCamp.getHeroes().iterator().next().getId()));
-		model.addAttribute("image", image);
 		Set<Hero> heroesNotInParty = new HashSet<>(selectedCamp.getHeroes());
 		heroesNotInParty.removeAll(selectedCamp.getParty().getMembers());
 		model.addAttribute("heroesNotInParty", heroesNotInParty);
