@@ -4,7 +4,9 @@ package ch.bfh.tom.frontend.client.impl;
 import ch.bfh.tom.frontend.client.CampClient;
 import ch.bfh.tom.frontend.model.Camp;
 import ch.bfh.tom.frontend.model.Party;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.hateoas.EntityModel;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -58,5 +60,11 @@ public class CampClientFallback implements CampClient {
     public EntityModel<Camp> removeHeroFromParty(String heroID, String campID) {
         System.out.println("Using Fallback");
         return new EntityModel<>(new Camp());
+    }
+
+    @Override
+    public ResponseEntity<ByteArrayResource> getHeroImage(String heroID) {
+        System.out.println("Using Fallback");
+        return null;
     }
 }

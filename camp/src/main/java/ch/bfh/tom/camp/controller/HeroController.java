@@ -2,8 +2,8 @@ package ch.bfh.tom.camp.controller;
 
 import ch.bfh.tom.camp.model.Hero;
 import ch.bfh.tom.camp.repository.HeroRepository;
-import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.CacheControl;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -19,8 +19,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.IOException;
-import java.io.InputStream;
+import java.util.Base64;
+
+import static java.util.Base64.getEncoder;
 
 @RestController
 @RequestMapping("/heroes")
@@ -42,21 +43,18 @@ public class HeroController {
     }
 
 
-    @GetMapping(value = "/{id}/getImage",
-            produces = MediaType.IMAGE_JPEG_VALUE)
-    public ResponseEntity<byte[]> getImage(@PathVariable String id) {
+    @GetMapping(value = "/{id}/getImage")
+    public ResponseEntity<ByteArrayResource> getImage(@PathVariable String id) {
         Hero hero = heroRepository.findById(id).get();
         HttpHeaders headers = new HttpHeaders();
-        InputStream in = getClass().getResourceAsStream(hero.getImagePath());
-        byte[] media = new byte[0];
-        try {
-            media = IOUtils.toByteArray(in);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        byte[] media = hero.getImage();
+        media = Base64.getEncoder().encodeToString(media).getBytes();
         headers.setCacheControl(CacheControl.noCache().getHeaderValue());
-
-        return new ResponseEntity<>(media, headers, HttpStatus.OK);
+        return ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType("application/octet-stream"))
+                .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"" + hero.getImagePath() + "\"")
+                .contentLength(media.length)
+                .body(new ByteArrayResource(media));
     }
 
     @PostMapping
