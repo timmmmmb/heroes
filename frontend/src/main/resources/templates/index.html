@@ -4,37 +4,44 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <title>home</title>
         <link rel="stylesheet" href="/bootstrap.min.css" media="screen"/>
+        <link rel="stylesheet" href="/custom.css" media="screen"/>
     </head>
     <body>
-        <div class="container">
-            <h1 class="col-sm-12">Heroes</h1>
-            <p>Your Camp: <span th:text="${selectedCamp.name}"/></p>
+        <h1 class="col-sm-12 h1--main">Heroes</h1>
+        <div class="container container--main">
+            <div class="container__item">
+                <h2><span th:text="${selectedCamp.name}"/></h2>
 
-            <form class="form-horizontal" th:action="@{/battle}" enctype="multipart/form-data" >
-                <span class="input-group-btn">
-                    <button type="submit" class="btn btn-default">Promote Fight</button>
-                </span>
-            </form>
+                <form class="form-horizontal" th:action="@{/campForm}" enctype="multipart/form-data" >
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-default">Change Camp</button>
+                    </span>
+                </form>
 
-            <span th:text="${result}"/>
-            <br>
-            <form class="form-horizontal" th:action="@{/campForm}" enctype="multipart/form-data" >
-                <span class="input-group-btn">
-                    <button type="submit" class="btn btn-default">Change Camp</button>
-                </span>
-            </form>
-            <br/>
-            <div>
+                <form class="form-horizontal" th:action="@{/battle}" enctype="multipart/form-data" >
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-default">Promote Fight</button>
+                    </span>
+                </form>
+
+                <span th:text="${result}"/>
+            </div>
+            <div class="container__item">
                 <h2>Manage Heroes</h2>
                 <form class="form-horizontal" th:action="@{/manageHeroes}" enctype="multipart/form-data" >
-                <span class="input-group-btn">
-                    <button type="submit" class="btn btn-default">Manage Heroes</button>
-                </span>
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-default">Manage Heroes</button>
+                    </span>
                 </form>
             </div>
-
+            <div class="container__item">
+                <h2>Shop</h2>
+                <form class="form-horizontal" th:action="@{/shop}" enctype="multipart/form-data" >
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-default">Shop</button>
+                    </span>
+                </form>
+            </div>
         </div>
-
-
     </body>
 </html>
