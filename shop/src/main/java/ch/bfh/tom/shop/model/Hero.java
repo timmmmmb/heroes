@@ -18,7 +18,7 @@ public class Hero {
     private int atk;
     private int def;
     private double hp;
-    private double exp;
+    private double gold;
 
     public String getName() {
         return name;
@@ -56,12 +56,12 @@ public class Hero {
         return id;
     }
 
-    public void setExp(double exp) {
-        this.exp = exp;
+    public void setGold(double gold) {
+        this.gold = gold;
     }
 
-    public double getExp() {
-        return exp;
+    public double getGold() {
+        return gold;
     }
 
     @Override
@@ -77,14 +77,14 @@ public class Hero {
         return atk == hero.atk &&
                 def == hero.def &&
                 hp == hero.hp &&
-                exp == hero.exp &&
+                gold == hero.gold &&
                 id.equals(hero.id) &&
                 name.equals(hero.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, atk, def, hp, exp);
+        return Objects.hash(id, name, atk, def, hp, gold);
     }
 }
 

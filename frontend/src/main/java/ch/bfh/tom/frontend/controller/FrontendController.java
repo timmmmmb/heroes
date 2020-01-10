@@ -123,4 +123,10 @@ public class FrontendController {
 
 		return "redirect:manageHeroes";
 	}
+
+	@GetMapping(value = "/shop")
+	public String shop(Model model) {
+		model.addAttribute("items", frontendService.getShopItems());
+		return "shop";
+	}
 }

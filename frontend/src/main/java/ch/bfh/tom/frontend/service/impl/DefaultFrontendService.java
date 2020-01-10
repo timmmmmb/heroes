@@ -2,11 +2,15 @@ package ch.bfh.tom.frontend.service.impl;
 
 import ch.bfh.tom.frontend.client.CampClient;
 import ch.bfh.tom.frontend.client.PromoterClient;
+import ch.bfh.tom.frontend.client.ShopClient;
 import ch.bfh.tom.frontend.model.Camp;
+import ch.bfh.tom.frontend.model.Item;
 import ch.bfh.tom.frontend.model.Party;
 import ch.bfh.tom.frontend.service.FrontendService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class DefaultFrontendService implements FrontendService {
@@ -17,6 +21,9 @@ public class DefaultFrontendService implements FrontendService {
 
     @Autowired
     private CampClient campClient;
+
+    @Autowired
+    private ShopClient shopClient;
 
     @Override
     public String promoteFight(String campID) {
@@ -57,5 +64,10 @@ public class DefaultFrontendService implements FrontendService {
     @Override
     public Camp addHeroToParty(String heroID, String campID) {
         return campClient.addHeroToParty(heroID, campID).getContent();
+    }
+
+    @Override
+    public Iterable<Item> getShopItems() {
+        return shopClient.shop();
     }
 }

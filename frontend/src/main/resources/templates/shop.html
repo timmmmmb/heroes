@@ -4,10 +4,17 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <title>Shop</title>
         <link rel="stylesheet" href="/bootstrap.min.css" media="screen"/>
+        <link rel="stylesheet" href="/custom.css" media="screen"/>
     </head>
     <body>
-        <div class="container">
-            <h1 class="col-sm-12">Shop</h1>
+        <h1 class="col-sm-12">Shop</h1>
+        <div class="container container--main">
+            <div th:each="item : ${items}" class="container__item container__item--shop">
+                <img th:src="@{/{imgname}.png(imgname=${item.itemType})}" th:alt="${item.name}">
+                <span th:text="${item.name}" class="shop__item__name"/>
+                <span th:text="${item.price}" class="shop__item__price"/>
+                <span th:text="${item.itemType}" class="shop__item__itemtype"/>
+            </div>
         </div>
     </body>
 </html>
