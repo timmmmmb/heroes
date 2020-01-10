@@ -13,6 +13,12 @@
     align-items: center;
 }
 
+.container--shop {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
 .container__item {
     width: 30%;
     padding: 3em;
@@ -22,16 +28,25 @@
 }
 
 .container__item--shop {
-    width: 15%;
-    height: 200px;
+    padding: 0;
+    margin: 1em 1%;
+    width: 18%;
+    height: 250px;
+    min-height: 200px;
     box-shadow: 0px 0px 10px 0px #bbb;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    cursor: pointer;
 }
 
 .container__item--shop img {
     width: 30px;
     height: 30px;
+}
+
+.shop__item__name {
+    font-weight: bold;
+    margin: 0.5em 0;
 }

@@ -2,13 +2,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Select Camp</title>
+    <title>Heroes | Select Camp</title>
     <link rel="stylesheet" href="/bootstrap.min.css" media="screen"/>
+    <link rel="stylesheet" href="/custom.css" media="screen"/>
 </head>
 <body>
-    <div class="container">
-        <h1 class="col-sm-12">Heroes</h1>
-        <div>
+    <h1 class="col-sm-12 h1--main">Heroes</h1>
+    <div class="container container--main">
+        <div class="container__item">
             <h2>Select Camp</h2>
             <form class="form-horizontal" th:action="@{/selectCamp}" enctype="multipart/form-data" >
                 <p>Camp: <select th:value="${campID}" name="campID">
@@ -19,8 +20,8 @@
                 </span>
             </form>
         </div>
-        <div>
-            <h2>Create New Camp</h2>
+        <div class="container__item">
+            <h2>New Camp</h2>
             <form class="form-horizontal" th:action="@{/createCamp}" enctype="multipart/form-data" >
                 <p>Name: <input type="text" th:value="${campName}" name="campName" required/></p>
                 <span class="input-group-btn">
