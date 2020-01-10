@@ -14,7 +14,7 @@
             <div class="col-sm-8">
                 <p>Party: <span th:text="${selectedCamp.party.members.size()}+'\4'"></span></p>
                 <div th:each="hero : ${selectedCamp.party.members}" style="border: 2px solid #0d1318; margin: 2px" class="col-sm-4">
-                    <!--TODO: create here space for the images that will come-->
+                    <img th:src="'data:image/png;base64,'+${hero.image}" alt="Hero Image" height="150" width="150" style="margin: 0 auto">
                     <form class="form-horizontal" th:action="@{/removeHeroFromParty}" enctype="multipart/form-data" >
                         <input type="hidden" th:value="${hero.id}" name="heroID" required/>
                         <span class="input-group-btn">
@@ -42,7 +42,7 @@
             <div class="col-sm-8">
                 <p>Heroes: <span th:text="${heroesNotInParty.size()}"></span></p>
                 <div th:each="hero : ${heroesNotInParty}" style="border: 2px solid #0d1318; margin: 2px" class="col-sm-4">
-                    <!--TODO: create here space for the images that will come-->
+                    <img th:src="'data:image/png;base64,'+${hero.image}" alt="Hero Image" height="150" width="150" style="margin: 0 auto">
                     <form class="form-horizontal" th:action="@{/addHeroToParty}" enctype="multipart/form-data" >
                         <input type="hidden" th:value="${hero.id}" name="heroID" required/>
                         <span class="input-group-btn">

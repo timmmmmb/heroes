@@ -1,10 +1,13 @@
 package ch.bfh.tom.camp.model;
 
+import org.apache.commons.io.IOUtils;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Objects;
 
 @Entity
@@ -18,6 +21,7 @@ public class Hero {
     private int atk;
     private int def;
     private double hp;
+    private String imagePath;
 
     public String getName() {
         return name;
@@ -53,6 +57,26 @@ public class Hero {
 
     public String getId() {
         return id;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+
+    }
+
+    public byte[] getImage() {
+        InputStream in = getClass().getResourceAsStream(this.imagePath);
+        byte[] media = new byte[0];
+        try {
+            media = IOUtils.toByteArray(in);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return media;
     }
 
     @Override

@@ -4,7 +4,9 @@ import ch.bfh.tom.frontend.client.impl.CampClientFallback;
 import ch.bfh.tom.frontend.model.Camp;
 import ch.bfh.tom.frontend.model.Party;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.hateoas.EntityModel;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -36,4 +38,8 @@ public interface CampClient {
 
     @RequestMapping(method = RequestMethod.GET, value = "/camps/removeHeroFromParty?heroID={heroID}&campID={campID}")
     EntityModel<Camp> removeHeroFromParty(@PathVariable("heroID") String heroID,@PathVariable("campID")  String campID);
+
+    @RequestMapping(method = RequestMethod.GET, value = "/heroes/{heroID}/getImage")
+    ResponseEntity<ByteArrayResource> getHeroImage(@PathVariable("heroID") String heroID);
+
 }

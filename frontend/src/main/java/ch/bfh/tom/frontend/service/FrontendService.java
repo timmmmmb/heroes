@@ -3,6 +3,8 @@ package ch.bfh.tom.frontend.service;
 import ch.bfh.tom.frontend.model.Camp;
 import ch.bfh.tom.frontend.model.Item;
 import ch.bfh.tom.frontend.model.Party;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 
 public interface FrontendService {
 
@@ -15,4 +17,5 @@ public interface FrontendService {
     Camp removeHeroFromParty(String heroID, String campID);
     Camp addHeroToParty(String heroID, String campID);
     Iterable<Item> getShopItems();
+    byte[] getHeroImage(String heroID);
 }

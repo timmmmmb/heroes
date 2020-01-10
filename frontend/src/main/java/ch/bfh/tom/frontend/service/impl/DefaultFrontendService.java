@@ -8,9 +8,10 @@ import ch.bfh.tom.frontend.model.Item;
 import ch.bfh.tom.frontend.model.Party;
 import ch.bfh.tom.frontend.service.FrontendService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
+import java.util.Objects;
 
 @Service
 public class DefaultFrontendService implements FrontendService {
@@ -70,4 +71,12 @@ public class DefaultFrontendService implements FrontendService {
     public Iterable<Item> getShopItems() {
         return shopClient.shop();
     }
+
+    public byte[] getHeroImage(String heroID) {
+        ResponseEntity<ByteArrayResource> response = campClient.getHeroImage(heroID);
+        if(response == null)
+            return null;
+        return Objects.requireNonNull(response.getBody()).getByteArray();
+    }
+
 }

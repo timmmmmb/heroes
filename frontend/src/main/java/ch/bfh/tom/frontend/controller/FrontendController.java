@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Set;
 
 @Controller
@@ -79,8 +81,12 @@ public class FrontendController {
 		if(selectedCamp == null){
 			return "redirect:campForm";
 		}
+		for(Hero hero:selectedCamp.getHeroes()){
+			String image = new String(frontendService.getHeroImage(hero.getId()));
+			hero.setImage(image);
+		}
 		model.addAttribute("selectedCamp", selectedCamp);
-		Set<Hero> heroesNotInParty = selectedCamp.getHeroes();
+		Set<Hero> heroesNotInParty = new HashSet<>(selectedCamp.getHeroes());
 		heroesNotInParty.removeAll(selectedCamp.getParty().getMembers());
 		model.addAttribute("heroesNotInParty", heroesNotInParty);
 		return "heroManager";
