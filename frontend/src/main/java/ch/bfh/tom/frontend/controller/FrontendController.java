@@ -135,4 +135,14 @@ public class FrontendController {
 		model.addAttribute("items", frontendService.getShopItems());
 		return "shop";
 	}
+
+	@GetMapping(value = "/shopBuyItem")
+	public String shopBuyItem(Model model, @RequestParam String itemID) {
+		if(selectedCamp == null){
+			return "redirect:campForm";
+		}
+		model.addAttribute("heroes", selectedCamp.getHeroes());
+		model.addAttribute("item", frontendService.getShopItem(itemID));
+		return "shopBuyItem";
+	}
 }

@@ -72,6 +72,12 @@ public class DefaultFrontendService implements FrontendService {
         return shopClient.shop();
     }
 
+    @Override
+    public Item getShopItem(String itemID) {
+        return shopClient.getShopItem(itemID);
+    }
+
+    @Override
     public byte[] getHeroImage(String heroID) {
         ResponseEntity<ByteArrayResource> response = campClient.getHeroImage(heroID);
         if(response == null)

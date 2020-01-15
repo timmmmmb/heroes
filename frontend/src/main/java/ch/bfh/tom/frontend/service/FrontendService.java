@@ -17,5 +17,6 @@ public interface FrontendService {
     Camp removeHeroFromParty(String heroID, String campID);
     Camp addHeroToParty(String heroID, String campID);
     Iterable<Item> getShopItems();
+    Item getShopItem(String itemID);
     byte[] getHeroImage(String heroID);
 }

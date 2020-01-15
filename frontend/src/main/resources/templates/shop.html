@@ -14,6 +14,10 @@
                     <img th:src="@{/{imgname}.png(imgname=${item.itemType})}" th:alt="${item.name}">
                     <p class="shop__item__name"><span th:text="${item.name}"/></p>
                     <p class="shop__item__price"><span th:text="${item.price}"/> Gold</p>
+                    <form th:action="@{/shopBuyItem}" enctype="multipart/form-data">
+                        <input type="hidden" name="itemID" th:value="${item.id}">
+                        <button type="submit" class="btn btn-default">Buy</button>
+                    </form>
                 </div>
             </div>
             <form class="form-horizontal" th:action="@{/}" enctype="multipart/form-data" >
