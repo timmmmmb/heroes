@@ -21,6 +21,7 @@ public class Hero {
     private int atk;
     private int def;
     private double hp;
+    private double gold;
     private String imagePath;
 
     public String getName() {
@@ -53,6 +54,14 @@ public class Hero {
 
     public void setHp(double hp) {
         this.hp = hp;
+    }
+
+    public double getGold() {
+        return gold;
+    }
+
+    public void setGold(double gold) {
+        this.gold = gold;
     }
 
     public String getId() {

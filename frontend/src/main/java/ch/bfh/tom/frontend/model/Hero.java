@@ -1,13 +1,10 @@
 package ch.bfh.tom.frontend.model;
 
-import org.apache.commons.io.IOUtils;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Objects;
 
 @Entity
@@ -21,6 +18,7 @@ public class Hero {
     private int atk;
     private int def;
     private double hp;
+    private double gold;
     private String imagePath;
 
     public String getImage() {
@@ -63,6 +61,14 @@ public class Hero {
 
     public void setHp(double hp) {
         this.hp = hp;
+    }
+
+    public double getGold() {
+        return gold;
+    }
+
+    public void setGold(double gold) {
+        this.gold = gold;
     }
 
     public String getId() {

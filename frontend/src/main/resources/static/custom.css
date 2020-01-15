@@ -1,4 +1,6 @@
 .h1--main {
+    display: flex;
+    justify-content: space-between;
     width: 100%;
     text-align: center;
     margin: 2em 0;
@@ -26,6 +28,7 @@
     padding: 3em;
     margin: 2em;
     min-height: 300px;
+    min-width: 300px;
     box-shadow: 0px 0px 2px 0px #bbb;
 }
 
@@ -54,9 +57,11 @@
     margin: 0.5em 0;
 }
 
-.container--buy {
+.container--buy, .container--party {
     width: 100%;
     display: flex;
+    margin: 0;
+    padding: 0;
 }
 
 #selectHero {
@@ -75,6 +80,38 @@
     margin: 0;
     padding: 0;
     box-shadow: none;
+}
+
+.container__item--party {
+    width: 50%;
+    padding: 1em 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 120px;
+}
+
+.container__item--heroes {
+    width: 50%;
+    height: 70vh;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    box-shadow: none;
+    overflow-x: auto;
+}
+
+.hero {
+    border: 2px solid #0d1318;
+    margin: 2px 3em;
+    padding: 15px;
+    min-width: 250px;
+    min-height: 400px;
+    background: white;
 }
 
 .container__item--dark {
