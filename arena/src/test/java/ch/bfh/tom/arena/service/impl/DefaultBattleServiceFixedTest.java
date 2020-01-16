@@ -14,80 +14,80 @@ class DefaultBattleServiceFixedTest {
     @Test
     void battle() {
 
-        Party chalengeeParty = new Party();
-        chalengeeParty.setName("ChalengeeParty");
+        Party challengeeParty = new Party();
+        challengeeParty.setName("ChallengeeParty");
 
-        List<Hero> chalengeeMembers = new ArrayList<>();
+        List<Hero> challengeeMembers = new ArrayList<>();
 
-        Hero chalengeeHero0 = new Hero();
-        chalengeeHero0.setName("ChalengeeHero0");
-        chalengeeHero0.setAtk(50);
-        chalengeeHero0.setDef(50);
-        chalengeeHero0.setHp(100.0);
-        chalengeeMembers.add(chalengeeHero0);
+        Hero challengeeHero0 = new Hero();
+        challengeeHero0.setName("ChallengeeHero0");
+        challengeeHero0.setAtk(50);
+        challengeeHero0.setDef(50);
+        challengeeHero0.setHp(100.0);
+        challengeeMembers.add(challengeeHero0);
 
-        Hero chalengeeHero1 = new Hero();
-        chalengeeHero1.setName("ChalengeeHero1");
-        chalengeeHero1.setAtk(0);
-        chalengeeHero1.setDef(100);
-        chalengeeHero1.setHp(100.0);
-        chalengeeMembers.add(chalengeeHero1);
+        Hero challengeeHero1 = new Hero();
+        challengeeHero1.setName("ChallengeeHero1");
+        challengeeHero1.setAtk(0);
+        challengeeHero1.setDef(100);
+        challengeeHero1.setHp(100.0);
+        challengeeMembers.add(challengeeHero1);
 
-        Hero chalengeeHero2 = new Hero();
-        chalengeeHero2.setName("ChalengeeHero2");
-        chalengeeHero2.setAtk(0);
-        chalengeeHero2.setDef(0);
-        chalengeeHero2.setHp(100.0);
-        chalengeeMembers.add(chalengeeHero2);
+        Hero challengeeHero2 = new Hero();
+        challengeeHero2.setName("ChallengeeHero2");
+        challengeeHero2.setAtk(0);
+        challengeeHero2.setDef(0);
+        challengeeHero2.setHp(100.0);
+        challengeeMembers.add(challengeeHero2);
 
-        Hero chalengeeHero3 = new Hero();
-        chalengeeHero3.setName("ChalengeeHero3");
-        chalengeeHero3.setAtk(78);
-        chalengeeHero3.setDef(34);
-        chalengeeHero3.setHp(100.0);
-        chalengeeMembers.add(chalengeeHero3);
+        Hero challengeeHero3 = new Hero();
+        challengeeHero3.setName("ChallengeeHero3");
+        challengeeHero3.setAtk(78);
+        challengeeHero3.setDef(34);
+        challengeeHero3.setHp(100.0);
+        challengeeMembers.add(challengeeHero3);
 
-        chalengeeParty.setMembers(chalengeeMembers);
+        challengeeParty.setMembers(challengeeMembers);
 
-        Party chalengerParty = new Party();
-        chalengerParty.setName("ChalengerParty");
+        Party challengerParty = new Party();
+        challengerParty.setName("ChallengerParty");
 
-        List<Hero> chalengerMembers = new ArrayList<>();
+        List<Hero> challengerMembers = new ArrayList<>();
 
-        Hero chalengerHero0 = new Hero();
-        chalengerHero0.setName("ChalengerHero0");
-        chalengerHero0.setAtk(50);
-        chalengerHero0.setDef(50);
-        chalengerHero0.setHp(100.0);
-        chalengerMembers.add(chalengerHero0);
+        Hero challengerHero0 = new Hero();
+        challengerHero0.setName("ChallengerHero0");
+        challengerHero0.setAtk(50);
+        challengerHero0.setDef(50);
+        challengerHero0.setHp(100.0);
+        challengerMembers.add(challengerHero0);
 
-        Hero chalengerHero1 = new Hero();
-        chalengerHero1.setName("ChalengerHero1");
-        chalengerHero1.setAtk(100);
-        chalengerHero1.setDef(0);
-        chalengerHero1.setHp(100.0);
-        chalengerMembers.add(chalengerHero1);
+        Hero challengerHero1 = new Hero();
+        challengerHero1.setName("ChallengerHero1");
+        challengerHero1.setAtk(100);
+        challengerHero1.setDef(0);
+        challengerHero1.setHp(100.0);
+        challengerMembers.add(challengerHero1);
 
-        Hero chalengerHero2 = new Hero();
-        chalengerHero2.setName("ChalengerHero2");
-        chalengerHero2.setAtk(0);
-        chalengerHero2.setDef(0);
-        chalengerHero2.setHp(100.0);
-        chalengerMembers.add(chalengerHero2);
+        Hero challengerHero2 = new Hero();
+        challengerHero2.setName("ChallengerHero2");
+        challengerHero2.setAtk(0);
+        challengerHero2.setDef(0);
+        challengerHero2.setHp(100.0);
+        challengerMembers.add(challengerHero2);
 
-        Hero chalengerHero3 = new Hero();
-        chalengerHero3.setName("ChalengerHero3");
-        chalengerHero3.setAtk(82);
-        chalengerHero3.setDef(45);
-        chalengerHero3.setHp(100.0);
-        chalengerMembers.add(chalengerHero3);
+        Hero challengerHero3 = new Hero();
+        challengerHero3.setName("ChallengerHero3");
+        challengerHero3.setAtk(82);
+        challengerHero3.setDef(45);
+        challengerHero3.setHp(100.0);
+        challengerMembers.add(challengerHero3);
 
-        chalengerParty.setMembers(chalengerMembers);
+        challengerParty.setMembers(challengerMembers);
 
 
         DefaultBattleService battleService = new DefaultBattleService();
-        String winner = battleService.battle(chalengeeParty, chalengerParty);
+        String winner = battleService.battle(challengeeParty, challengerParty);
 
-        assertEquals(winner, chalengerParty.getName());
+        assertEquals(winner, challengerParty.getName());
     }
 }
