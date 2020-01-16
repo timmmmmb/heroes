@@ -2,6 +2,7 @@ package ch.bfh.tom.frontend.client;
 
 import ch.bfh.tom.frontend.client.impl.CampClientFallback;
 import ch.bfh.tom.frontend.model.Camp;
+import ch.bfh.tom.frontend.model.Hero;
 import ch.bfh.tom.frontend.model.Party;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.core.io.ByteArrayResource;
@@ -42,4 +43,6 @@ public interface CampClient {
     @RequestMapping(method = RequestMethod.GET, value = "/heroes/{heroID}/getImage")
     ResponseEntity<ByteArrayResource> getHeroImage(@PathVariable("heroID") String heroID);
 
+    @RequestMapping(method = RequestMethod.GET, value = "/heroes/{heroID}/changeName?name={name}")
+    EntityModel<Hero> changeName(@PathVariable("heroID") String heroID, @PathVariable("name") String name);
 }

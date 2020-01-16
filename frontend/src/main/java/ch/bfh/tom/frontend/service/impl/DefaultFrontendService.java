@@ -85,4 +85,9 @@ public class DefaultFrontendService implements FrontendService {
         return Objects.requireNonNull(response.getBody()).getByteArray();
     }
 
+    @Override
+    public String changeName(String heroID, String name) {
+        return campClient.changeName(heroID, name).getContent().getName();
+    }
+
 }

@@ -19,4 +19,5 @@ public interface FrontendService {
     Iterable<Item> getShopItems();
     Item getShopItem(String itemID);
     byte[] getHeroImage(String heroID);
+    String changeName(String heroID, String name);
 }

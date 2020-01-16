@@ -117,6 +117,19 @@ public class FrontendController {
 		return "redirect:manageHeroes";
 	}
 
+	@GetMapping(value = "/changeName")
+	public String changeName(Model model, @RequestParam String heroID, @RequestParam String name) {
+		if(selectedCamp == null){
+			return "redirect:campForm";
+		}
+		if(heroID.equals("")){
+			return "redirect:manageHeroes";
+		}
+
+		model.addAttribute("name", frontendService.changeName(heroID, name));
+		return "changeName";
+	}
+
 	@GetMapping(value = "/removeHeroFromParty")
 	public String removeHeroFromParty(Model model, @RequestParam String heroID) {
 		if(selectedCamp == null){

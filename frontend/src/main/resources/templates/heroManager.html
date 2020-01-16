@@ -1,129 +1,167 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <title>Heroes | Home</title>
-        <link rel="stylesheet" href="/bootstrap.min.css" media="screen"/>
-        <link rel="stylesheet" href="/custom.css" media="screen"/>
-        <script src="/jquery-3.4.1.min.js"></script>
-        <script src="https://www.w3schools.com/lib/w3.js"></script>
-        <script>
-            jQuery(document).ready(function($) {
-                heroPartySlideShow = w3.slideshow(".hero--party", 0);
-                heroNotPartySlideShow = w3.slideshow(".hero--not-party", 0);
-            });
-        </script>
-    </head>
-    <body>
-        <h1 class="col-sm-12 h1--main">
-            <form class="form-horizontal" th:action="@{/}" enctype="multipart/form-data" style="float: left;">
-                <button type="submit" class="btn btn-default">Back</button>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <title>Heroes | Home</title>
+    <link href="/bootstrap.min.css" media="screen" rel="stylesheet"/>
+    <link href="/custom.css" media="screen" rel="stylesheet"/>
+    <script src="/jquery-3.4.1.min.js"></script>
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            heroPartySlideShow = w3.slideshow(".hero--party", 0);
+            heroNotPartySlideShow = w3.slideshow(".hero--not-party", 0);
+        });
+    </script>
+    <script type="text/javascript">
+        function onEnter(event) {
+            if (event.keyCode === 13) {
+
+                let name = $(event.target).text();
+                let heroID = event.target.id.replace('heroName-', '');
+                $.ajax({
+                    type: "GET",
+                    url: "changeName",
+                    data: {
+                        "heroID": heroID,
+                        "name": name
+                    },
+                    success: function (data) {
+                        console.log("changed the name of:" + heroID + " to " + name);
+                        $(event.target).html(name);
+                    }
+                });
+            }
+        }
+    </script>
+</head>
+<body>
+<h1 class="col-sm-12 h1--main">
+    <form class="form-horizontal" enctype="multipart/form-data" style="float: left;" th:action="@{/}">
+        <button class="btn btn-default" type="submit">Back</button>
+    </form>
+    <span th:text="${selectedCamp.name}"></span>
+    <span style="color: white;">Back</span>
+</h1>
+
+<div class="container container--party">
+
+    <div class="container__item container__item--party">
+        <h2 class="party__title">Party: <span th:text="${selectedCamp.party.members.size()}+'\4'"></span></h2>
+    </div>
+    <div class="container__item container__item--party">
+        <h2 class="party__title">Heroes: <span th:text="${heroesNotInParty.size()}"></span></h2>
+    </div>
+
+</div>
+
+<div class="container container--party">
+
+    <!-- HEROES IN PARTY -->
+    <div class="container__item container__item--heroes container__item--dark" style="border-right:1px solid #ccc">
+
+        <button class="btn btn-default" onclick="heroPartySlideShow.previous()">&#10094;</button>
+
+        <div class="hero hero--party" th:each="hero : ${selectedCamp.party.members}">
+            <img alt="Hero Image" height="150" style="margin: 0 auto" th:src="'data:image/png;base64,'+${hero.image}"
+                 width="150">
+            <form class="form-horizontal" enctype="multipart/form-data" th:action="@{/removeHeroFromParty}">
+                <input name="heroID" required th:value="${hero.id}" type="hidden"/>
+                <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">Remove</button>
+                        </span>
             </form>
-            <span th:text="${selectedCamp.name}"></span>
-            <span style="color: white;">Back</span>
-        </h1>
-
-        <div class="container container--party">
-
-            <div class="container__item container__item--party">
-                <h2 class="party__title">Party: <span th:text="${selectedCamp.party.members.size()}+'\4'"></span></h2>
+            <h3 contenteditable="true" th:id="'heroName-'+${hero.id}" th:onKeyPress="'onEnter(event)'"
+                th:text="${hero.name}"></h3>
+            <p><i>Gold: <span th:text="${hero.gold}"></span></i></p>
+            <p style="margin-bottom: 1px">HP:
+            <div class="progress" style="margin-bottom: 2px">
+                <div aria-valuemax="100" aria-valuemin="0" class="progress-bar"
+                     role="progressbar" th:aria-valuenow="${hero.hp}"
+                     th:style="'width:'+${hero.hp}+'%; background-color:green'" th:text="${hero.hp}"></div>
             </div>
-            <div class="container__item container__item--party">
-                <h2 class="party__title">Heroes: <span th:text="${heroesNotInParty.size()}"></span></h2>
+            </p>
+            <p style="margin-bottom: 1px">Def:
+            <div class="progress" style="margin-bottom: 2px">
+                <div aria-valuemax="100" aria-valuemin="0" class="progress-bar"
+                     role="progressbar" th:aria-valuenow="${hero.def}"
+                     th:style="'width:'+${hero.def}+'%; background-color:blue'" th:text="${hero.def}"></div>
             </div>
-
+            </p>
+            <p style="margin-bottom: 1px">Atk:
+            <div class="progress" style="margin-bottom: 2px">
+                <div aria-valuemax="100" aria-valuemin="0" class="progress-bar"
+                     role="progressbar" th:aria-valuenow="${hero.atk}"
+                     th:style="'width:'+${hero.atk}+'%; background-color:red'" th:text="${hero.atk}"></div>
+            </div>
+            </p>
         </div>
 
-        <div class="container container--party">
+        <button class="btn btn-default" onclick="heroPartySlideShow.next()">&#10095;</button>
 
-            <!-- HEROES IN PARTY -->
-            <div class="container__item container__item--heroes container__item--dark" style="border-right:1px solid #ccc">
+    </div>
 
-                <button onclick="heroPartySlideShow.previous()" class="btn btn-default">&#10094;</button>
+    <!-- HEROES NOT IN PARTY -->
+    <div class="container__item container__item--heroes container__item--dark" style="border-left:1px solid #ccc">
 
-                <div th:each="hero : ${selectedCamp.party.members}" class="hero hero--party">
-                    <img th:src="'data:image/png;base64,'+${hero.image}" alt="Hero Image" height="150" width="150" style="margin: 0 auto">
-                    <form class="form-horizontal" th:action="@{/removeHeroFromParty}" enctype="multipart/form-data" >
-                        <input type="hidden" th:value="${hero.id}" name="heroID" required/>
-                        <span class="input-group-btn">
-                        <button type="submit" class="btn btn-default">Remove</button>
+        <button class="btn btn-default" onclick="heroNotPartySlideShow.previous()">&#10094;</button>
+
+        <div class="col-sm-4 hero hero--not-party" th:each="hero : ${heroesNotInParty}">
+            <img alt="Hero Image" height="150" style="margin: 0 auto" th:src="'data:image/png;base64,'+${hero.image}"
+                 width="150">
+            <form class="form-horizontal" enctype="multipart/form-data" th:action="@{/addHeroToParty}">
+                <input name="heroID" required th:value="${hero.id}" type="hidden"/>
+                <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">Add to party</button>
                         </span>
-                    </form>
-                    <h3 th:text="${hero.name}"></h3>
-                    <p><i>Gold: <span th:text="${hero.gold}"></span></i></p>
-                    <p style="margin-bottom: 1px">HP:
-                    <div class="progress" style="margin-bottom: 2px">
-                        <div class="progress-bar" role="progressbar" th:style="'width:'+${hero.hp}+'%; background-color:green'" th:aria-valuenow="${hero.hp}" aria-valuemin="0" aria-valuemax="100" th:text="${hero.hp}"></div>
-                    </div>
-                    </p>
-                    <p style="margin-bottom: 1px">Def:
-                    <div class="progress" style="margin-bottom: 2px">
-                        <div class="progress-bar" role="progressbar" th:style="'width:'+${hero.def}+'%; background-color:blue'" th:aria-valuenow="${hero.def}" aria-valuemin="0" aria-valuemax="100" th:text="${hero.def}"></div>
-                    </div>
-                    </p>
-                    <p style="margin-bottom: 1px">Atk:
-                    <div class="progress" style="margin-bottom: 2px">
-                        <div class="progress-bar" role="progressbar" th:style="'width:'+${hero.atk}+'%; background-color:red'" th:aria-valuenow="${hero.atk}" aria-valuemin="0" aria-valuemax="100" th:text="${hero.atk}"></div>
-                    </div>
-                    </p>
-                </div>
-
-                <button onclick="heroPartySlideShow.next()" class="btn btn-default">&#10095;</button>
-
+            </form>
+            <h3 contenteditable="true" th:id="'heroName-'+${hero.id}" th:onKeyPress="'onEnter(event)'"
+                th:text="${hero.name}"></h3>
+            <p><i>Gold: <span th:text="${hero.gold}"></span></i></p>
+            <p style="margin-bottom: 1px">HP:
+            <div class="progress" style="margin-bottom: 2px">
+                <div aria-valuemax="100" aria-valuemin="0" class="progress-bar"
+                     role="progressbar" th:aria-valuenow="${hero.hp}"
+                     th:style="'width:'+${hero.hp}+'%; background-color:green'" th:text="${hero.hp}"></div>
             </div>
-
-            <!-- HEROES NOT IN PARTY -->
-            <div class="container__item container__item--heroes container__item--dark" style="border-left:1px solid #ccc">
-
-                <button onclick="heroNotPartySlideShow.previous()" class="btn btn-default">&#10094;</button>
-
-                <div th:each="hero : ${heroesNotInParty}" class="col-sm-4 hero hero--not-party">
-                    <img th:src="'data:image/png;base64,'+${hero.image}" alt="Hero Image" height="150" width="150" style="margin: 0 auto">
-                    <form class="form-horizontal" th:action="@{/addHeroToParty}" enctype="multipart/form-data" >
-                        <input type="hidden" th:value="${hero.id}" name="heroID" required/>
-                        <span class="input-group-btn">
-                        <button type="submit" class="btn btn-default">Add to party</button>
-                        </span>
-                    </form>
-                    <h3 th:text="${hero.name}"></h3>
-                    <p><i>Gold: <span th:text="${hero.gold}"></span></i></p>
-                    <p style="margin-bottom: 1px">HP:
-                    <div class="progress" style="margin-bottom: 2px">
-                        <div class="progress-bar" role="progressbar" th:style="'width:'+${hero.hp}+'%; background-color:green'" th:aria-valuenow="${hero.hp}" aria-valuemin="0" aria-valuemax="100" th:text="${hero.hp}"></div>
-                    </div>
-                    </p>
-                    <p style="margin-bottom: 1px">Def:
-                    <div class="progress" style="margin-bottom: 2px">
-                        <div class="progress-bar" role="progressbar" th:style="'width:'+${hero.def}+'%; background-color:blue'" th:aria-valuenow="${hero.def}" aria-valuemin="0" aria-valuemax="100" th:text="${hero.def}"></div>
-                    </div>
-                    </p>
-                    <p style="margin-bottom: 1px">Atk:
-                    <div class="progress" style="margin-bottom: 2px">
-                        <div class="progress-bar" role="progressbar" th:style="'width:'+${hero.atk}+'%; background-color:red'" th:aria-valuenow="${hero.atk}" aria-valuemin="0" aria-valuemax="100" th:text="${hero.atk}"></div>
-                    </div>
-                    </p>
-                </div>
-
-                <button onclick="heroNotPartySlideShow.next()" class="btn btn-default">&#10095;</button>
-
+            </p>
+            <p style="margin-bottom: 1px">Def:
+            <div class="progress" style="margin-bottom: 2px">
+                <div aria-valuemax="100" aria-valuemin="0" class="progress-bar"
+                     role="progressbar" th:aria-valuenow="${hero.def}"
+                     th:style="'width:'+${hero.def}+'%; background-color:blue'" th:text="${hero.def}"></div>
             </div>
-
+            </p>
+            <p style="margin-bottom: 1px">Atk:
+            <div class="progress" style="margin-bottom: 2px">
+                <div aria-valuemax="100" aria-valuemin="0" class="progress-bar"
+                     role="progressbar" th:aria-valuenow="${hero.atk}"
+                     th:style="'width:'+${hero.atk}+'%; background-color:red'" th:text="${hero.atk}"></div>
+            </div>
+            </p>
         </div>
 
-        <div style="width:100%; text-align:center;">
-            <h2 style="width:100%; padding:2em 0;">Add new Hero</h2>
-        </div>
+        <button class="btn btn-default" onclick="heroNotPartySlideShow.next()">&#10095;</button>
 
-        <div style="width:100%;text-align-center;">
-            <div class="container__item" style="min-width:450px; min-height:200px; margin: 0 auto 2em;">
-                <form class="form-horizontal" th:action="@{/addHero}" enctype="multipart/form-data" >
-                    <p>
-                        <input type="text" th:value="${heroName}" name="heroName" placeholder="Name" style="padding: 0.6em 0;" required/>
-                        <button type="submit" class="btn btn-default">Add new Hero</button>
-                    </p>
-                </form>
-            </div>
-        </div>
+    </div>
 
-    </body>
+</div>
+
+<div style="width:100%; text-align:center;">
+    <h2 style="width:100%; padding:2em 0;">Add new Hero</h2>
+</div>
+
+<div style="width:100%;text-align-center;">
+    <div class="container__item" style="min-width:450px; min-height:200px; margin: 0 auto 2em;">
+        <form class="form-horizontal" enctype="multipart/form-data" th:action="@{/addHero}">
+            <p>
+                <input name="heroName" placeholder="Name" required style="padding: 0.6em 0;" th:value="${heroName}"
+                       type="text"/>
+                <button class="btn btn-default" type="submit">Add new Hero</button>
+            </p>
+        </form>
+    </div>
+</div>
+
+</body>
 </html>
