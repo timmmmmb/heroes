@@ -76,4 +76,11 @@ public class CampClientFallback implements CampClient {
         hero.setName(name);
         return new EntityModel<>(hero);
     }
+
+    @Override
+    public EntityModel<Hero> applyShopItem(String heroID, String type, double price) {
+        System.out.println("Using Fallback");
+        Hero hero = new Hero();
+        return new EntityModel<>(hero);
+    }
 }

@@ -15,8 +15,8 @@ public class Hero {
     @GenericGenerator(name = "system-uuid", strategy = "uuid2")
     private String id;
     private String name;
-    private int atk;
-    private int def;
+    private double atk;
+    private double def;
     private double hp;
     private double gold;
     private String imagePath;
@@ -39,19 +39,19 @@ public class Hero {
         this.name = name;
     }
 
-    public int getAtk() {
+    public double getAtk() {
         return atk;
     }
 
-    public void setAtk(int atk) {
+    public void setAtk(double atk) {
         this.atk = atk;
     }
 
-    public int getDef() {
+    public double getDef() {
         return def;
     }
 
-    public void setDef(int def) {
+    public void setDef(double def) {
         this.def = def;
     }
 

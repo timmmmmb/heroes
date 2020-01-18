@@ -20,7 +20,13 @@
     </script>
 </head>
 <body>
-    <h1 class="col-sm-12 h1--main">Buy Item</h1>
+<h1 class="col-sm-12 h1--main">
+    <form class="form-horizontal" enctype="multipart/form-data" style="float: left;" th:action="@{/shop}">
+        <button class="btn btn-default" type="submit">Back</button>
+    </form>
+    <span>Buy Item</span>
+    <span style="color: white;">Back</span>
+</h1>
     <div class="container container--buy">
         <div class="container__item container__item--buy container__item--dark">
             <select name="heroID" id="selectHero">
@@ -54,7 +60,7 @@
                 <p class="shop__item__price"><span th:text="${item.price}"/> Gold</p>
                 <form th:action="@{/shopApplyItem}" enctype="multipart/form-data">
                     <input type="hidden" name="itemID" th:value="${item.id}">
-                    <input type="hidden" name="heroID" id="heroID">
+                    <input type="text" name="heroID" id="heroID">
                     <button type="submit" class="btn btn-default">Buy</button>
                 </form>
             </div>

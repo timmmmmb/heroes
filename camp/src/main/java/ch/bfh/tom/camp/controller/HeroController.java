@@ -2,6 +2,7 @@ package ch.bfh.tom.camp.controller;
 
 import ch.bfh.tom.camp.model.Hero;
 import ch.bfh.tom.camp.repository.HeroRepository;
+import ch.bfh.tom.camp.service.HeroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.CacheControl;
@@ -28,6 +29,9 @@ public class HeroController {
 
     @Autowired
     private HeroRepository heroRepository;
+
+    @Autowired
+    private HeroService heroService;
 
     @GetMapping
     public @ResponseBody
@@ -74,5 +78,10 @@ public class HeroController {
         hero.setName(name);
         hero = heroRepository.save(hero);
         return hero;
+    }
+
+    @GetMapping(value = "/{id}/applyShopItem")
+    public Hero applyShopItem(@PathVariable String id, @RequestParam String type, @RequestParam double price) {
+        return heroService.applyShopItem(id, type, price);
     }
 }

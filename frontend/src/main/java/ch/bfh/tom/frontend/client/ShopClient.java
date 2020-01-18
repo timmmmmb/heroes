@@ -16,7 +16,4 @@ public interface ShopClient {
     @RequestMapping(method = RequestMethod.GET, value = "/shop/{id}")
     Item getShopItem(@PathVariable("id") String id);
 
-    @RequestMapping(method = RequestMethod.GET, value = "/shop/applyItem?itemID={itemID}&heroID={heroID}")
-    Hero applyItem(@PathVariable("itemID") String itemID, @PathVariable("heroID") String heroID);
-
 }
