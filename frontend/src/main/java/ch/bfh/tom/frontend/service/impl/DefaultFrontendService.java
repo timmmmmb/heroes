@@ -4,6 +4,7 @@ import ch.bfh.tom.frontend.client.CampClient;
 import ch.bfh.tom.frontend.client.PromoterClient;
 import ch.bfh.tom.frontend.client.ShopClient;
 import ch.bfh.tom.frontend.model.Camp;
+import ch.bfh.tom.frontend.model.Hero;
 import ch.bfh.tom.frontend.model.Item;
 import ch.bfh.tom.frontend.model.Party;
 import ch.bfh.tom.frontend.service.FrontendService;
@@ -75,6 +76,11 @@ public class DefaultFrontendService implements FrontendService {
     @Override
     public Item getShopItem(String itemID) {
         return shopClient.getShopItem(itemID);
+    }
+
+    @Override
+    public Hero applyShopItem(String itemID, String heroID) {
+        return shopClient.applyItem(itemID, heroID);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package ch.bfh.tom.frontend.client;
 
+import ch.bfh.tom.frontend.model.Hero;
 import ch.bfh.tom.frontend.model.Item;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,4 +15,8 @@ public interface ShopClient {
 
     @RequestMapping(method = RequestMethod.GET, value = "/shop/{id}")
     Item getShopItem(@PathVariable("id") String id);
+
+    @RequestMapping(method = RequestMethod.GET, value = "/shop/applyItem?itemID={itemID}&heroID={heroID}")
+    Hero applyItem(@PathVariable("itemID") String itemID, @PathVariable("heroID") String heroID);
+
 }

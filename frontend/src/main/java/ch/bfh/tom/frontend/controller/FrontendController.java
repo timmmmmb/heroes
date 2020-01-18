@@ -158,4 +158,13 @@ public class FrontendController {
 		model.addAttribute("item", frontendService.getShopItem(itemID));
 		return "shopBuyItem";
 	}
+
+	@GetMapping(value = "/shopApplyItem")
+	public String shopApplyItem(Model model, @RequestParam String itemID, @RequestParam String heroID) {
+		if(selectedCamp == null){
+			return "redirect:campForm";
+		}
+		Hero updatedHero = frontendService.applyShopItem(itemID, heroID);
+		return "redirect::shopBuyItem";
+	}
 }

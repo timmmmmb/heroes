@@ -7,7 +7,13 @@
         <link rel="stylesheet" href="/custom.css" media="screen"/>
     </head>
     <body>
-        <h1 class="col-sm-12 h1--main">Shop</h1>
+        <h1 class="col-sm-12 h1--main">
+            <form class="form-horizontal" enctype="multipart/form-data" style="float: left;" th:action="@{/}">
+                <button class="btn btn-default" type="submit">Back</button>
+            </form>
+            <span>Shop</span>
+            <span style="color: white;">Back</span>
+        </h1>
         <div class="container">
             <div class="container--shop">
                 <div th:each="item : ${items}" class="container__item container__item--shop">
@@ -20,11 +26,6 @@
                     </form>
                 </div>
             </div>
-            <form class="form-horizontal" th:action="@{/}" enctype="multipart/form-data" >
-                <span class="input-group-btn">
-                    <button type="submit" class="btn btn-default">Back</button>
-                </span>
-            </form>
         </div>
     </body>
 </html>

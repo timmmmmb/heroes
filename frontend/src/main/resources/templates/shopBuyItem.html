@@ -10,9 +10,10 @@
         jQuery(document).ready(function($) {
             (window.displayHero = function() {
                 var selectedHero = ".hero-"+$("#selectHero option:selected").text();
+                var selectedHeroID = $("#selectHero option:selected").val();
                 $(".hero").hide();
                 $(selectedHero).show();
-                console.log(selectedHero);
+                $("#heroID").val(selectedHeroID);
             })();
             $("#selectHero").on('change', displayHero);
         });
@@ -25,7 +26,6 @@
             <select name="heroID" id="selectHero">
                 <option th:each="hero : ${heroes}" th:value="${hero.id}" th:text="${hero.name}"></option>
             </select>
-            <!-- CONTINUE HERE => Display selected hero-->
             <div th:each="hero : ${heroes}" style="background:white;border:2px solid #0d1318;margin:2px;width:350px" th:class="@{col-sm-4 hero hero-{name} (name=${hero.name})}" hidden>
                 <img th:src="'data:image/png;base64,'+${hero.image}" alt="Hero Image" height="150" width="150" style="margin: 0 auto">
                 <h3 th:text="${hero.name}"></h3>
@@ -54,6 +54,7 @@
                 <p class="shop__item__price"><span th:text="${item.price}"/> Gold</p>
                 <form th:action="@{/shopApplyItem}" enctype="multipart/form-data">
                     <input type="hidden" name="itemID" th:value="${item.id}">
+                    <input type="hidden" name="heroID" id="heroID">
                     <button type="submit" class="btn btn-default">Buy</button>
                 </form>
             </div>
