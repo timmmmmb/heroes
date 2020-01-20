@@ -1,24 +1,13 @@
 # Heroes - Team Tom
 Unser Projekt für das Java Open Source Modul.
 
-## Schwierigkeiten
-
-Viele Klassen der Dependencies die im Aufgabenteil erwähnt wurden waren
-bereits veraltet und konnten nicht verwendet werden. Aus diesem Grund musste
-man zuerst herausfinden wie die aktuellen Klassen heissen, die für unseren Zweck
-geeignet waren.
-
-## Erweiterungen
-
-## Schlussstand des Projekts
-
 ## Installationsanleitung lokal
 
 ### Importieren
 
 Dies ist ein Mavenprojekt. Das Projekt muss als solches bei der IDE importiert werden.
 
-### Compilieren
+### Kompilieren
 
 In einer Shell oder einem Kommandofenster
 
@@ -31,7 +20,7 @@ In einer Shell oder einem Kommandofenster
 Bei Allen Modulen die Starterklasse ausführen.
 Im Browser auf <http://localhost:8080/> navigieren, da sich dort der Frontendservice befindet
 
-## Gebrauchsanleitung
+## Services
 
 | Service | Port | Beschreibung |
 | --- | --- | --- |
