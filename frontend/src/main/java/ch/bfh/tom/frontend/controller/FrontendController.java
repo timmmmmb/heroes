@@ -165,6 +165,6 @@ public class FrontendController {
 			return "redirect:campForm";
 		}
 		Hero updatedHero = frontendService.applyShopItem(itemID, heroID);
-		return "redirect::shopBuyItem";
+		return "redirect:index";
 	}
 }

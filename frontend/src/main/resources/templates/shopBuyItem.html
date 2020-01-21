@@ -60,7 +60,7 @@
                 <p class="shop__item__price"><span th:text="${item.price}"/> Gold</p>
                 <form th:action="@{/shopApplyItem}" enctype="multipart/form-data">
                     <input type="hidden" name="itemID" th:value="${item.id}">
-                    <input type="text" name="heroID" id="heroID">
+                    <input type="hidden" name="heroID" id="heroID">
                     <button type="submit" class="btn btn-default">Buy</button>
                 </form>
             </div>
