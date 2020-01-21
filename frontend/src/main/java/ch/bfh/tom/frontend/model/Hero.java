@@ -39,16 +39,16 @@ public class Hero {
         this.name = name;
     }
 
-    public double getAtk() {
-        return atk;
+    public int getAtk() {
+        return (int) atk;
     }
 
     public void setAtk(double atk) {
         this.atk = atk;
     }
 
-    public double getDef() {
-        return def;
+    public int getDef() {
+        return (int) def;
     }
 
     public void setDef(double def) {
