@@ -103,10 +103,11 @@ public class DefaultBattleService implements BattleService {
         // defense blocks DEF percent of ATK
         double defense = defender.getDef();
         if (defense > 1) defense--;
-        LOG.info("Defending "+defender.getName()+" blocked "+defense+" percent of damage.");
+        double block = (Math.log10(defense)*25/100);
+        LOG.info("Defending "+defender.getName()+" blocked "+block+" percent of damage.");
 
         // harm = damage - defense
-        double harm = damage - (damage * (defense/100));
+        double harm = damage - (damage * block);
         LOG.info("Defending "+defender.getName()+" lost "+f.format(harm)+" of health.");
 
         // harm is drawn from defenders hp
