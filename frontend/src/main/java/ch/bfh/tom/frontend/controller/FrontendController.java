@@ -145,7 +145,11 @@ public class FrontendController {
 
 	@GetMapping(value = "/shop")
 	public String shop(Model model) {
+		if(selectedCamp == null){
+			return "redirect:campForm";
+		}
 		model.addAttribute("items", frontendService.getShopItems());
+		model.addAttribute("camp", selectedCamp);
 		return "shop";
 	}
 

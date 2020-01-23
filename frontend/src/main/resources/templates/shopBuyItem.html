@@ -8,6 +8,7 @@
     <script src="/jquery-3.4.1.min.js"></script>
     <script>
         jQuery(document).ready(function($) {
+            //Hero selector
             (window.displayHero = function() {
                 var selectedHero = ".hero-"+$("#selectHero option:selected").text();
                 var selectedHeroID = $("#selectHero option:selected").val();
@@ -21,11 +22,11 @@
 </head>
 <body>
 <h1 class="col-sm-12 h1--main">
-    <form class="form-horizontal" enctype="multipart/form-data" style="float: left;" th:action="@{/shop}">
+    <form class="form-horizontal" enctype="multipart/form-data" style="margin-right:2em;" th:action="@{/shop}">
         <button class="btn btn-default" type="submit">Back</button>
     </form>
     <span>Buy Item</span>
-    <span style="color: white;">Back</span>
+    <p style="margin-right:1em;"><span th:text="${camp.gold}"/><img src="/gold.png" alt="Gold"></p>
 </h1>
     <div class="container container--buy">
         <div class="container__item container__item--buy container__item--dark">
@@ -35,7 +36,6 @@
             <div th:each="hero : ${heroes}" style="background:white;border:2px solid #0d1318;margin:2px;width:350px" th:class="@{col-sm-4 hero hero-{name} (name=${hero.name})}" hidden>
                 <img th:src="'data:image/png;base64,'+${hero.image}" alt="Hero Image" height="150" width="150" style="margin: 0 auto">
                 <h3 th:text="${hero.name}"></h3>
-                <p><i>Gold: <span th:text="${camp.gold}"></span></i></p>
                 <p style="margin-bottom: 1px">HP:
                 <div class="progress" style="margin-bottom: 2px">
                     <div class="progress-bar" role="progressbar" th:style="'width:'+${hero.hp}+'%; background-color:green'" th:aria-valuenow="${hero.hp}" aria-valuemin="0" aria-valuemax="100" th:text="${hero.hp}"></div>

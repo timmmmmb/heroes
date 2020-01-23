@@ -5,14 +5,29 @@
         <title>Heroes | Shop</title>
         <link rel="stylesheet" href="/bootstrap.min.css" media="screen"/>
         <link rel="stylesheet" href="/custom.css" media="screen"/>
+        <script src="/jquery-3.4.1.min.js"></script>
+        <script th:inline="javascript">
+            //Use $ as 'jq' to prevent conflicts with thymeleaf
+            jQuery(document).ready(function(jq) {
+                //Disable all items that are too expensive
+                var campGold = [[${camp.gold}]];
+                jq(".container__item--shop").each(function(index) {
+                    var itemPrice = jq(this).find(".shop__item__price").find("span").text();
+                    if(itemPrice > campGold) {
+                        jq(this).find(".btn").attr("disabled", true);
+                        jq(this).addClass("container__item--disabled");
+                    }
+                });
+            });
+        </script>
     </head>
     <body>
         <h1 class="col-sm-12 h1--main">
-            <form class="form-horizontal" enctype="multipart/form-data" style="float: left;" th:action="@{/}">
+            <form class="form-horizontal" enctype="multipart/form-data" style="margin-right:2em;" th:action="@{/}">
                 <button class="btn btn-default" type="submit">Back</button>
             </form>
             <span>Shop</span>
-            <span style="color: white;">Back</span>
+            <p style="margin-right:1em;"><span th:text="${camp.gold}"/><img src="/gold.png" alt="Gold"></p>
         </h1>
         <div class="container">
             <div class="container--shop">

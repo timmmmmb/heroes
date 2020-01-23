@@ -61,6 +61,10 @@
     height: 30px;
 }
 
+.container__item--disabled {
+    opacity: 0.5;
+}
+
 .shop__item__name {
     font-weight: bold;
     margin: 0.5em 0;

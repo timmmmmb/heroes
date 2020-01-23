@@ -37,11 +37,11 @@
 </head>
 <body>
 <h1 class="col-sm-12 h1--main">
-    <form class="form-horizontal" enctype="multipart/form-data" style="float: left;" th:action="@{/}">
+    <form class="form-horizontal" enctype="multipart/form-data" style="margin-right:2em;" th:action="@{/}">
         <button class="btn btn-default" type="submit">Back</button>
     </form>
     <span th:text="${selectedCamp.name}"></span>
-    <span style="color: white;">Back</span>
+    <p style="margin-right:1em;"><span th:text="${selectedCamp.gold}"/><img src="/gold.png" alt="Gold"></p>
 </h1>
 
 <div class="container container--party">
@@ -151,7 +151,6 @@
 
 
 <div style="width:100%;text-align-center;">
-    <p><i>Gold: <span th:text="${selectedCamp.gold}"></span></i></p>
     <div class="container__item" style="min-width:450px; min-height:200px; margin: 0 auto 2em;">
         <form class="form-horizontal" enctype="multipart/form-data" th:action="@{/addHero}">
             <p>
