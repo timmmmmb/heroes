@@ -165,6 +165,7 @@ public class FrontendController {
 			return "redirect:campForm";
 		}
 		Hero updatedHero = frontendService.applyShopItem(itemID, heroID);
+		selectedCamp = frontendService.getCamp(selectedCamp.getId());
 		return "redirect:index";
 	}
 }

@@ -1,6 +1,5 @@
 package ch.bfh.tom.frontend.client;
 
-import ch.bfh.tom.frontend.model.Hero;
 import ch.bfh.tom.frontend.model.Item;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
