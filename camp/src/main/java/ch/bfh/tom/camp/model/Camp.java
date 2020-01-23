@@ -15,6 +15,7 @@ public class Camp extends RepresentationModel {
     @GenericGenerator(name = "system-uuid", strategy = "uuid2")
     private String id;
     private String name;
+    private double gold;
     @OneToMany
     private Set<Hero> heroes = new HashSet<>();
     @OneToOne
@@ -67,5 +68,13 @@ public class Camp extends RepresentationModel {
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), getId(), getName(), getHeroes(), getParty());
+    }
+
+    public double getGold() {
+        return gold;
+    }
+
+    public void setGold(double gold) {
+        this.gold = gold;
     }
 }

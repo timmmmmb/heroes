@@ -24,6 +24,7 @@ public class DefaultCampService implements CampService {
         camp.addHeroes(party.getMembers());
         camp.setParty(party);
         camp.setName(name);
+        camp.setGold(50);
         campRepository.save(camp);
         return camp;
     }

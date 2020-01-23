@@ -79,9 +79,9 @@ public class DefaultFrontendService implements FrontendService {
     }
 
     @Override
-    public Hero applyShopItem(String itemID, String heroID) {
+    public Hero applyShopItem(String itemID, String heroID, String campID) {
         Item item = shopClient.getShopItem(itemID);
-        return campClient.applyShopItem(heroID, item.getItemType().toString(), item.getPrice()).getContent();
+        return campClient.applyShopItem(heroID, item.getItemType().toString(), item.getPrice(), campID).getContent();
     }
 
     @Override

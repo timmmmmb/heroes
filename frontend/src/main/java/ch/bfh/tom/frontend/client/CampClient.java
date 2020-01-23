@@ -46,7 +46,7 @@ public interface CampClient {
     @RequestMapping(method = RequestMethod.GET, value = "/heroes/{heroID}/changeName?name={name}")
     EntityModel<Hero> changeName(@PathVariable("heroID") String heroID, @PathVariable("name") String name);
 
-    @RequestMapping(method = RequestMethod.GET, value = "/heroes/{heroID}/applyShopItem?type={type}&price={price}")
-    EntityModel<Hero> applyShopItem(@PathVariable("heroID") String heroID, @PathVariable("type") String type, @PathVariable("price") double price);
+    @RequestMapping(method = RequestMethod.GET, value = "/heroes/{heroID}/applyShopItem?type={type}&price={price}&campID={campID}")
+    EntityModel<Hero> applyShopItem(@PathVariable("heroID") String heroID, @PathVariable("type") String type, @PathVariable("price") double price, @PathVariable("campID") String campID);
 
 }

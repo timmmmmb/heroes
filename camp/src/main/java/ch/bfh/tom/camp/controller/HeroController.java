@@ -80,8 +80,8 @@ public class HeroController {
         return hero;
     }
 
-    @GetMapping(value = "/{id}/applyShopItem")
-    public Hero applyShopItem(@PathVariable String id, @RequestParam String type, @RequestParam double price) {
-        return heroService.applyShopItem(id, type, price);
+    @GetMapping(value = "/{heroID}/applyShopItem")
+    public Hero applyShopItem(@PathVariable String heroID, @RequestParam String type, @RequestParam double price, @RequestParam String campID) {
+        return heroService.applyShopItem(heroID, type, price, campID);
     }
 }

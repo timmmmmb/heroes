@@ -156,6 +156,7 @@ public class FrontendController {
 		}
 		model.addAttribute("heroes", selectedCamp.getHeroes());
 		model.addAttribute("item", frontendService.getShopItem(itemID));
+		model.addAttribute("camp", selectedCamp);
 		return "shopBuyItem";
 	}
 
@@ -164,7 +165,7 @@ public class FrontendController {
 		if(selectedCamp == null){
 			return "redirect:campForm";
 		}
-		Hero updatedHero = frontendService.applyShopItem(itemID, heroID);
+		Hero updatedHero = frontendService.applyShopItem(itemID, heroID, selectedCamp.getId());
 		selectedCamp = frontendService.getCamp(selectedCamp.getId());
 		return "redirect:index";
 	}

@@ -19,7 +19,7 @@ public interface FrontendService {
     Camp addHeroToParty(String heroID, String campID);
     Iterable<Item> getShopItems();
     Item getShopItem(String itemID);
-    Hero applyShopItem(String itemID, String heroID);
+    Hero applyShopItem(String itemID, String heroID, String campID);
     byte[] getHeroImage(String heroID);
     String changeName(String heroID, String name);
 }

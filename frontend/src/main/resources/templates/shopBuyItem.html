@@ -35,7 +35,7 @@
             <div th:each="hero : ${heroes}" style="background:white;border:2px solid #0d1318;margin:2px;width:350px" th:class="@{col-sm-4 hero hero-{name} (name=${hero.name})}" hidden>
                 <img th:src="'data:image/png;base64,'+${hero.image}" alt="Hero Image" height="150" width="150" style="margin: 0 auto">
                 <h3 th:text="${hero.name}"></h3>
-                <p><i>Gold: <span th:text="${hero.gold}"></span></i></p>
+                <p><i>Gold: <span th:text="${camp.gold}"></span></i></p>
                 <p style="margin-bottom: 1px">HP:
                 <div class="progress" style="margin-bottom: 2px">
                     <div class="progress-bar" role="progressbar" th:style="'width:'+${hero.hp}+'%; background-color:green'" th:aria-valuenow="${hero.hp}" aria-valuemin="0" aria-valuemax="100" th:text="${hero.hp}"></div>

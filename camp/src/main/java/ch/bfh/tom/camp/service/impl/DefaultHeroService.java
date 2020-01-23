@@ -1,8 +1,10 @@
 package ch.bfh.tom.camp.service.impl;
 
 import ch.bfh.tom.camp.CampApplicationRunner;
+import ch.bfh.tom.camp.model.Camp;
 import ch.bfh.tom.camp.model.Hero;
 import ch.bfh.tom.camp.model.ItemType;
+import ch.bfh.tom.camp.repository.CampRepository;
 import ch.bfh.tom.camp.repository.HeroRepository;
 import ch.bfh.tom.camp.service.HeroService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,8 @@ public class DefaultHeroService implements HeroService {
 
     @Autowired
     private HeroRepository heroRepository;
+    @Autowired
+    private CampRepository campRepository;
 
     @Override
     public Hero createHero(String name) {
@@ -27,7 +31,6 @@ public class DefaultHeroService implements HeroService {
         hero.setAtk(1 + (100 - 1) * random.nextDouble());
         hero.setDef(1 + (100 - 1) * random.nextDouble());
         hero.setHp(100);
-        hero.setGold(50);
         ArrayList<String> images = CampApplicationRunner.getImages();
         hero.setImagePath(images.get(random.nextInt(images.size())));
 
@@ -36,7 +39,6 @@ public class DefaultHeroService implements HeroService {
         System.out.println("ATK:  " + hero.getAtk());
         System.out.println("DEF:  " + hero.getDef());
         System.out.println("HP:   " + hero.getHp());
-        System.out.println("Gold: " + hero.getGold());
         System.out.println();
 
         String id = this.heroRepository.save(hero).getId();
@@ -48,13 +50,15 @@ public class DefaultHeroService implements HeroService {
     }
 
     @Override
-    public Hero applyShopItem(String id, String itemType, double itemPrice) {
+    public Hero applyShopItem(String heroID, String itemType, double itemPrice, String campID) {
 
-        Hero hero = heroRepository.findById(id).get();
+        Hero hero = heroRepository.findById(heroID).get();
+        Camp camp = campRepository.findById(campID).get();
 
-        double heroGold = hero.getGold();
+
+        double heroGold = camp.getGold();
         if (heroGold >= itemPrice) {
-            hero.setGold(heroGold - itemPrice);
+            camp.setGold(heroGold - itemPrice);
 
             ItemType type = ItemType.valueOf(itemType);
             switch(type) {
