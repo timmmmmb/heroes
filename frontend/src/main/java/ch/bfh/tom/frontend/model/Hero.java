@@ -18,6 +18,7 @@ public class Hero {
     private double atk;
     private double def;
     private double hp;
+    private double price;
     private String imagePath;
 
     public String getImage() {
@@ -64,6 +65,14 @@ public class Hero {
 
     public String getId() {
         return id;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public String getImagePath() {

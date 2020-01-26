@@ -89,6 +89,7 @@ public class FrontendController {
 		Set<Hero> heroesNotInParty = new HashSet<>(selectedCamp.getHeroes());
 		heroesNotInParty.removeAll(selectedCamp.getParty().getMembers());
 		model.addAttribute("heroesNotInParty", heroesNotInParty);
+		model.addAttribute("heroPrice", selectedCamp.getHeroes().iterator().next().getPrice());
 		return "heroManager";
 	}
 

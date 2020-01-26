@@ -31,14 +31,16 @@ public class DefaultHeroService implements HeroService {
         hero.setAtk(1 + (100 - 1) * random.nextDouble());
         hero.setDef(1 + (100 - 1) * random.nextDouble());
         hero.setHp(100);
+        hero.setPrice(150);
         ArrayList<String> images = CampApplicationRunner.getImages();
         hero.setImagePath(images.get(random.nextInt(images.size())));
 
         System.out.println("Created new hero ...");
-        System.out.println("Name: " + hero.getName());
-        System.out.println("ATK:  " + hero.getAtk());
-        System.out.println("DEF:  " + hero.getDef());
-        System.out.println("HP:   " + hero.getHp());
+        System.out.println("Name:   " + hero.getName());
+        System.out.println("ATK:    " + hero.getAtk());
+        System.out.println("DEF:    " + hero.getDef());
+        System.out.println("HP:     " + hero.getHp());
+        System.out.println("Price:  " + hero.getPrice());
         System.out.println();
 
         String id = this.heroRepository.save(hero).getId();

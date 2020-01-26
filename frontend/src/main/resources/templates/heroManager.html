@@ -7,8 +7,9 @@
     <link href="/custom.css" media="screen" rel="stylesheet"/>
     <script src="/jquery-3.4.1.min.js"></script>
     <script src="https://www.w3schools.com/lib/w3.js"></script>
-    <script>
-        jQuery(document).ready(function ($) {
+    <script th:inline="javascript">
+        //Use $ as 'jq' to prevent conflicts with thymeleaf
+        jQuery(document).ready(function (jq) {
             heroPartySlideShow = w3.slideshow(".hero--party", 0);
             heroNotPartySlideShow = w3.slideshow(".hero--not-party", 0);
         });
@@ -153,14 +154,19 @@
 <div style="width:100%;text-align-center;">
     <div class="container__item" style="min-width:450px; min-height:200px; margin: 0 auto 2em;">
         <form class="form-horizontal" enctype="multipart/form-data" th:action="@{/addHero}">
-            <p>
-                <input name="heroName" placeholder="Name" required style="padding: 0.6em 0;" th:value="${heroName}"
-                       type="text"/>
-                <button class="btn btn-default" type="submit">Add new Hero</button>
-            </p>
+            <p>Price: <b><span th:text="${heroPrice}"></span></b> Gold</p>
+            <input name="heroName" placeholder="Name" required style="padding: 0.6em 0;" th:value="${heroName}" type="text"/>
+            <button class="btn btn-default" id="addHeroBtn" type="submit">Add new Hero</button>
         </form>
     </div>
 </div>
 
+<script th:inline="javascript">
+    var campGold = [[${selectedCamp.gold}]];
+    var heroPrice = [[${heroPrice}]];
+    if(heroPrice > campGold) {
+        document.getElementById("addHeroBtn").disabled = true;
+    }
+</script>
 </body>
 </html>
