@@ -1,0 +1,32 @@
+version: "3.4"
+services:
+  registry:
+    build: ./registry
+    networks:
+      - tom
+    ports:
+      - "1111:1111"
+  camp:
+    build: ./camp
+    networks:
+      - tom
+  arena:
+    build: ./arena
+    networks:
+      - tom
+  promoter:
+    build: ./promoter
+    networks:
+      - tom
+  shop:
+    build: ./shop
+    networks:
+      - tom
+  frontend:
+    build: ./frontend
+    networks:
+      - tom
+    ports:
+      - "8080:8080"
+networks:
+  tom:
