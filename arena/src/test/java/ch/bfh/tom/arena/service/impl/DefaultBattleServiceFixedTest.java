@@ -1,5 +1,7 @@
 package ch.bfh.tom.arena.service.impl;
 
+import ch.bfh.tom.arena.model.Battle;
+import ch.bfh.tom.arena.model.Camp;
 import ch.bfh.tom.arena.model.Hero;
 import ch.bfh.tom.arena.model.Party;
 import org.junit.jupiter.api.Test;
@@ -16,6 +18,9 @@ class DefaultBattleServiceFixedTest {
 
         Party challengeeParty = new Party();
         challengeeParty.setName("ChallengeeParty");
+
+        Camp challengeeCamp = new Camp();
+        challengeeCamp.setParty(challengeeParty);
 
         List<Hero> challengeeMembers = new ArrayList<>();
 
@@ -52,6 +57,9 @@ class DefaultBattleServiceFixedTest {
         Party challengerParty = new Party();
         challengerParty.setName("ChallengerParty");
 
+        Camp challengerCamp = new Camp();
+        challengerCamp.setParty(challengerParty);
+
         List<Hero> challengerMembers = new ArrayList<>();
 
         Hero challengerHero0 = new Hero();
@@ -86,8 +94,8 @@ class DefaultBattleServiceFixedTest {
 
 
         DefaultBattleService battleService = new DefaultBattleService();
-        String winner = battleService.battle(challengeeParty, challengerParty);
+        Battle battle = battleService.battle(challengeeCamp, challengerCamp);
 
-        assertEquals(winner, challengerParty.getName());
+        assertEquals(battle.getWinner().getName(), challengerParty.getName());
     }
 }

@@ -1,7 +1,8 @@
 package ch.bfh.tom.arena.service;
 
-import ch.bfh.tom.arena.model.Party;
+import ch.bfh.tom.arena.model.Battle;
+import ch.bfh.tom.arena.model.Camp;
 
 public interface BattleService {
-    String battle(Party challengeeParty, Party challengerParty);
+    Battle battle(Camp challengeeParty, Camp challengerParty);
 }

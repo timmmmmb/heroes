@@ -26,4 +26,10 @@ public class CampClientFallback implements CampClient {
         System.out.println("Using Fallback");
         return new Camp();
     }
+
+    @Override
+    public Camp rewardCamp(String campID) {
+        System.out.println("Using Fallback");
+        return new Camp();
+    }
 }

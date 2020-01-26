@@ -1,5 +1,8 @@
 package ch.bfh.tom.promoter.controller;
 
+import ch.bfh.tom.promoter.model.Battle;
+import ch.bfh.tom.promoter.model.Camp;
+import ch.bfh.tom.promoter.model.Party;
 import ch.bfh.tom.promoter.service.PromoterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +17,9 @@ public class PromoterController {
 
     @GetMapping(value = "/promoteFight")
     public String promoteFight(@RequestParam String campID) {
-        String result = promoterService.promoteFight(campID);
-        return "The Promoter is proud to proclaim the following result of today's battle: "+result;
+        Battle battle = promoterService.promoteFight(campID);
+        Camp winner = promoterService.rewardCamp(battle);
+
+        return "The Promoter is proud to proclaim the following result of today's battle: "+battle.getResult();
     }
 }

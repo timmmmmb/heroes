@@ -1,5 +1,7 @@
 package ch.bfh.tom.arena.service.impl;
 
+import ch.bfh.tom.arena.model.Battle;
+import ch.bfh.tom.arena.model.Camp;
 import ch.bfh.tom.arena.model.Hero;
 import ch.bfh.tom.arena.model.Party;
 import org.junit.jupiter.api.Test;
@@ -36,12 +38,18 @@ class DefaultBattleServiceRandomTest {
         villains.add(createHero("Rick Flag"));
         villains.add(createHero("Captain Boomerang"));
 
+
         Party justiceLeague = createParty("Justice League", heroes);
         Party suicideSquad = createParty("Suicide Squad", villains);
 
+        Camp justiceLeagueCamp = new Camp();
+        justiceLeagueCamp.setParty(justiceLeague);
+        Camp suicideSquadCamp = new Camp();
+        suicideSquadCamp.setParty(suicideSquad);
+
         DefaultBattleService battleService = new DefaultBattleService();
-        String winner = battleService.battle(suicideSquad, justiceLeague);
-        System.out.println(winner);
+        Battle battle = battleService.battle(suicideSquadCamp, justiceLeagueCamp);
+        System.out.println(battle.getResult());
         assertTrue(true);
     }
 

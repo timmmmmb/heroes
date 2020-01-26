@@ -117,6 +117,14 @@ public class CampController {
         return camps.get(position);
     }
 
+    @GetMapping("/{id}/reward")
+    public @ResponseBody
+    Camp rewardCamp(@PathVariable String id) {
+        Camp winner = campRepository.findById(id).get();
+        winner.setGold(winner.getGold() + 50);
+        return campRepository.save(winner);
+    }
+
     static class SortByStrength implements Comparator<Camp>
     {
         private Camp camp;

@@ -19,4 +19,7 @@ public interface CampClient {
 
     @RequestMapping(method = RequestMethod.GET, value = "/camps/findOpponent?campID={campID}")
     Camp getOpponent(@PathVariable("campID") String campID);
+
+    @RequestMapping(method = RequestMethod.GET, value = "/camps/{campID}/reward")
+    Camp rewardCamp(@PathVariable("campID") String campID);
 }

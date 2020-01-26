@@ -2,6 +2,8 @@ package ch.bfh.tom.promoter.service.impl;
 
 import ch.bfh.tom.promoter.client.ArenaClient;
 import ch.bfh.tom.promoter.client.CampClient;
+import ch.bfh.tom.promoter.model.Battle;
+import ch.bfh.tom.promoter.model.Camp;
 import ch.bfh.tom.promoter.model.Party;
 import ch.bfh.tom.promoter.service.PromoterService;
 import org.slf4j.Logger;
@@ -24,17 +26,26 @@ public class DefaultPromoterService implements PromoterService {
     private ArenaClient arenaClient;
 
     @Override
-    public String promoteFight(String campID) {
-        Party challenger = campClient.getCamp(campID).getParty();
-        Party challengee = campClient.getOpponent(campID).getParty();
-        LOG.info("Todays battle is between Party '"+challengee.getName()+"' and Party '"+challenger.getName()+"'.");
+    public Battle promoteFight(String campID) {
+        Camp challenger = campClient.getCamp(campID);
+        Camp challengee = campClient.getOpponent(campID);
+        LOG.info("Todays battle is between Party '"+challengee.getParty().getName()+"' and Party '"+challenger.getParty().getName()+"'.");
 
-        List<Party> challangers = new ArrayList<>();
+        List<Camp> challangers = new ArrayList<>();
         challangers.add(challengee);
         challangers.add(challenger);
-        String winner = arenaClient.battle(challangers);
-        LOG.info("And the winner is: Party '"+winner+"'");
+        Battle battle = arenaClient.battle(challangers);
+        LOG.info("Result of the battle: '"+battle.getResult()+"'");
 
-        return  winner;
+        return battle;
+    }
+
+    @Override
+    public Camp rewardCamp(Battle battle) {
+        Camp winner = battle.getWinner();
+        if(winner == null) {
+            return null;
+        }
+        return campClient.rewardCamp(winner.getId());
     }
 }

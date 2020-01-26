@@ -1,5 +1,7 @@
 package ch.bfh.tom.arena.service.impl;
 
+import ch.bfh.tom.arena.model.Battle;
+import ch.bfh.tom.arena.model.Camp;
 import ch.bfh.tom.arena.model.Hero;
 import ch.bfh.tom.arena.model.Party;
 import ch.bfh.tom.arena.service.BattleService;
@@ -18,8 +20,13 @@ public class DefaultBattleService implements BattleService {
     private static final DecimalFormat f = new DecimalFormat("##.00");
 
     @Override
-    public String battle(Party challengeeParty, Party challengerParty) {
+    public Battle battle(Camp challengeeCamp, Camp challengerCamp) {
 
+        Party challengeeParty = challengeeCamp.getParty();
+        Party challengerParty = challengerCamp.getParty();
+        Battle battle = new Battle();
+        battle.setChallengee(challengeeCamp);
+        battle.setChallenger(challengerCamp);
         List<Hero> challengees = new ArrayList<>(challengeeParty.getMembers());
         List<Hero> challengers = new ArrayList<>(challengerParty.getMembers());
 
@@ -57,12 +64,18 @@ public class DefaultBattleService implements BattleService {
             // check if a party has already lost (no members left), return the winners party name
             if (challengees.isEmpty()) {
                 LOG.info("Party '"+challengerParty.getName()+"' wins this battle in "+roundCount+" rounds.");
-                return challengerParty.getName();
+                String result = "The winner of the battle between '"+challengerParty.getName()+"' and '"+challengeeParty.getName()+"' was '"+challengerParty.getName()+"'!";
+                battle.setResult(result);
+                battle.setWinner(challengerCamp);
+                return battle;
             }
 
             if (challengers.isEmpty()) {
                 LOG.info("Party '"+challengeeParty.getName()+"' wins this battle in "+roundCount+" rounds.");
-                return challengeeParty.getName();
+                String result = "The winner of the battle between '"+challengerParty.getName()+"' and '"+challengeeParty.getName()+"' was '"+challengeeParty.getName()+"'!";
+                battle.setResult(result);
+                battle.setWinner(challengeeCamp);
+                return battle;
             }
         }
     }
