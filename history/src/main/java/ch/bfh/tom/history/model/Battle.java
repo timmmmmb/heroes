@@ -53,4 +53,8 @@ public class Battle {
     public void setResult(String result) {
         this.result = result;
     }
+
+    public String getId() {
+        return id;
+    }
 }

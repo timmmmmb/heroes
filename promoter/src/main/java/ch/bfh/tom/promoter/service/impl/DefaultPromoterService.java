@@ -2,6 +2,7 @@ package ch.bfh.tom.promoter.service.impl;
 
 import ch.bfh.tom.promoter.client.ArenaClient;
 import ch.bfh.tom.promoter.client.CampClient;
+import ch.bfh.tom.promoter.client.HistoryClient;
 import ch.bfh.tom.promoter.model.Battle;
 import ch.bfh.tom.promoter.model.Camp;
 import ch.bfh.tom.promoter.model.Party;
@@ -25,6 +26,9 @@ public class DefaultPromoterService implements PromoterService {
     @Autowired
     private ArenaClient arenaClient;
 
+    @Autowired
+    private HistoryClient historyClient;
+
     @Override
     public Battle promoteFight(String campID) {
         Camp challenger = campClient.getCamp(campID);
@@ -47,5 +51,10 @@ public class DefaultPromoterService implements PromoterService {
             return null;
         }
         return campClient.rewardCamp(winner.getId());
+    }
+
+    @Override
+    public void saveBattle(Battle battle) {
+        historyClient.saveBattle(battle);
     }
 }

@@ -19,6 +19,7 @@ public class PromoterController {
     public String promoteFight(@RequestParam String campID) {
         Battle battle = promoterService.promoteFight(campID);
         //save the battle in the history service
+        promoterService.saveBattle(battle);
         Camp winner = promoterService.rewardCamp(battle);
 
         return "The Promoter is proud to proclaim the following result of today's battle: "+battle.getResult();

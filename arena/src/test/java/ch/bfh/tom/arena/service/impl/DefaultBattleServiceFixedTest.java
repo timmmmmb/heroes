@@ -96,6 +96,6 @@ class DefaultBattleServiceFixedTest {
         DefaultBattleService battleService = new DefaultBattleService();
         Battle battle = battleService.battle(challengeeCamp, challengerCamp);
 
-        assertEquals(battle.getWinner().getName(), challengerParty.getName());
+        assertEquals(battle.getWinner().getParty().getName(), challengerParty.getName());
     }
 }

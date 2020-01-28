@@ -4,18 +4,11 @@ import ch.bfh.tom.history.model.Battle;
 import ch.bfh.tom.history.repository.BattleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
 @RestController
-@RequestMapping("/history")
 public class HistoryController {
 
     @Autowired
@@ -23,9 +16,15 @@ public class HistoryController {
 
     @GetMapping
     public @ResponseBody
-    Battle[] list() {
+    Battle[] list(@RequestParam String campID) {
         ArrayList<Battle> camps = (ArrayList<Battle>) battleRepository.findAll();
-        return camps.toArray(new Battle[0]);
+        ArrayList<Battle> battles = new ArrayList<>();
+        for(Battle b:camps){
+            if(b.getChallenger().getId().equals(campID)){
+                battles.add(b);
+            }
+        }
+        return battles.toArray(new Battle[0]);
     }
 
     @PostMapping
