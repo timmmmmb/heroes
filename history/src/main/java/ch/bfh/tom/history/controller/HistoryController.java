@@ -29,8 +29,8 @@ public class HistoryController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
-    public void create(@RequestBody Battle battle) {
-        battleRepository.save(battle);
+    public Battle save(@RequestBody Battle battle) {
+        return battleRepository.save(battle);
     }
 
 }

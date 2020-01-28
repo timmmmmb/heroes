@@ -2,6 +2,8 @@ package ch.bfh.tom.promoter.model;
 
 public class Battle {
 
+
+    private String id;
     private Camp challenger;
     private Camp challengee;
     private Camp winner;

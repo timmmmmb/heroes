@@ -1,5 +1,5 @@
 FROM adoptopenjdk/openjdk11:alpine-slim
-EXPOSE 6666
+EXPOSE 7777
 RUN addgroup -S spring && adduser -S spring -G spring
 USER spring:spring
 ARG JAR_FILE=target/*.jar
