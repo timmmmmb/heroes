@@ -1,7 +1,17 @@
 package ch.bfh.tom.history.model;
 
-public class Battle {
+import org.hibernate.annotations.GenericGenerator;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+public class Battle {
+    @Id
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid2")
+    private String id;
     private Camp challenger;
     private Camp challengee;
     private Camp winner;
