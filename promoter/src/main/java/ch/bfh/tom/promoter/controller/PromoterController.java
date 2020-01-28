@@ -18,6 +18,7 @@ public class PromoterController {
     @GetMapping(value = "/promoteFight")
     public String promoteFight(@RequestParam String campID) {
         Battle battle = promoterService.promoteFight(campID);
+        //save the battle in the history service
         Camp winner = promoterService.rewardCamp(battle);
 
         return "The Promoter is proud to proclaim the following result of today's battle: "+battle.getResult();
