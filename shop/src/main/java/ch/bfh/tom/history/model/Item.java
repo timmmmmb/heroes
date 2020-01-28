@@ -1,4 +1,4 @@
-package ch.bfh.tom.shop.model;
+package ch.bfh.tom.history.model;
 
 import org.hibernate.annotations.GenericGenerator;
 

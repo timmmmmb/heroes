@@ -1,4 +1,4 @@
-package ch.bfh.tom.shop;
+package ch.bfh.tom.history;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

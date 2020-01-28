@@ -1,6 +1,6 @@
-package ch.bfh.tom.shop.repository;
+package ch.bfh.tom.history.repository;
 
-import ch.bfh.tom.shop.model.Item;
+import ch.bfh.tom.history.model.Item;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 

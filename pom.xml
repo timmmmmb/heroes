@@ -19,6 +19,7 @@
         <module>registry</module>
         <module>frontend</module>
         <module>shop</module>
+        <module>history</module>
     </modules>
 
     <properties>

@@ -1,9 +1,9 @@
-package ch.bfh.tom.shop.service.impl;
+package ch.bfh.tom.history.service.impl;
 
-import ch.bfh.tom.shop.model.Item;
-import ch.bfh.tom.shop.model.ItemType;
-import ch.bfh.tom.shop.repository.ItemRepository;
-import ch.bfh.tom.shop.service.ShopService;
+import ch.bfh.tom.history.model.Item;
+import ch.bfh.tom.history.model.ItemType;
+import ch.bfh.tom.history.repository.ItemRepository;
+import ch.bfh.tom.history.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

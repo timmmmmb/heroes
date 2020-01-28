@@ -4,8 +4,6 @@ import ch.bfh.tom.camp.model.Camp;
 import ch.bfh.tom.camp.model.Hero;
 import ch.bfh.tom.camp.model.Party;
 import ch.bfh.tom.camp.repository.CampRepository;
-import ch.bfh.tom.camp.repository.HeroRepository;
-import ch.bfh.tom.camp.repository.PartyRepository;
 import ch.bfh.tom.camp.service.CampService;
 import ch.bfh.tom.camp.service.HeroService;
 import ch.bfh.tom.camp.service.PartyService;
