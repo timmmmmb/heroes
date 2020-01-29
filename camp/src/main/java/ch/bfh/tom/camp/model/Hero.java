@@ -21,6 +21,7 @@ public class Hero {
     private double atk;
     private double def;
     private double hp;
+    private double xp;
     private double price;
     private String imagePath;
 
@@ -54,6 +55,14 @@ public class Hero {
 
     public void setHp(double hp) {
         this.hp = hp;
+    }
+
+    public double getXp() {
+        return xp;
+    }
+
+    public void setXp(double xp) {
+        this.xp = xp;
     }
 
     public String getId() {
@@ -101,12 +110,13 @@ public class Hero {
         return atk == hero.atk &&
                 def == hero.def &&
                 hp == hero.hp &&
+                xp == hero.xp &&
                 id.equals(hero.id) &&
                 name.equals(hero.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, atk, def, hp);
+        return Objects.hash(id, name, atk, def, hp, xp);
     }
 }

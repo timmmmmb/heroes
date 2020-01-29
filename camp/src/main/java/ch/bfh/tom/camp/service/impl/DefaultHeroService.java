@@ -31,6 +31,7 @@ public class DefaultHeroService implements HeroService {
         hero.setAtk(1 + (100 - 1) * random.nextDouble());
         hero.setDef(1 + (100 - 1) * random.nextDouble());
         hero.setHp(100);
+        hero.setXp(0);
         hero.setPrice(150);
         ArrayList<String> images = CampApplicationRunner.getImages();
         hero.setImagePath(images.get(random.nextInt(images.size())));
@@ -40,6 +41,7 @@ public class DefaultHeroService implements HeroService {
         System.out.println("ATK:    " + hero.getAtk());
         System.out.println("DEF:    " + hero.getDef());
         System.out.println("HP:     " + hero.getHp());
+        System.out.println("XP:     " + hero.getXp());
         System.out.println("Price:  " + hero.getPrice());
         System.out.println();
 
