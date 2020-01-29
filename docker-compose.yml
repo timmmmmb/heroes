@@ -10,6 +10,10 @@ services:
     build: ./camp
     networks:
       - tom
+  history:
+    build: ./history
+    networks:
+      - tom
   arena:
     build: ./arena
     networks:

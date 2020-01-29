@@ -175,4 +175,15 @@ public class FrontendController {
 		selectedCamp = frontendService.getCamp(selectedCamp.getId());
 		return "redirect:index";
 	}
+
+	@GetMapping(value = "/history")
+	public String shopApplyItem(Model model) {
+		if(selectedCamp == null){
+			return "redirect:campForm";
+		}
+
+		model.addAttribute("selectedCamp", selectedCamp);
+		model.addAttribute("histories", frontendService.getHistory(selectedCamp.getId()));
+		return "history";
+	}
 }

@@ -1,10 +1,12 @@
 package ch.bfh.tom.frontend.service.impl;
 
 import ch.bfh.tom.frontend.client.CampClient;
+import ch.bfh.tom.frontend.client.HistoryClient;
 import ch.bfh.tom.frontend.client.PromoterClient;
 import ch.bfh.tom.frontend.client.ShopClient;
 import ch.bfh.tom.frontend.model.Camp;
 import ch.bfh.tom.frontend.model.Hero;
+import ch.bfh.tom.frontend.model.History;
 import ch.bfh.tom.frontend.model.Item;
 import ch.bfh.tom.frontend.model.Party;
 import ch.bfh.tom.frontend.service.FrontendService;
@@ -23,6 +25,9 @@ public class DefaultFrontendService implements FrontendService {
 
     @Autowired
     private CampClient campClient;
+
+    @Autowired
+    private HistoryClient historyClient;
 
     @Autowired
     private ShopClient shopClient;
@@ -95,6 +100,11 @@ public class DefaultFrontendService implements FrontendService {
     @Override
     public String changeName(String heroID, String name) {
         return campClient.changeName(heroID, name).getContent().getName();
+    }
+
+    @Override
+    public History[] getHistory(String campID) {
+        return historyClient.getHistory(campID);
     }
 
 }

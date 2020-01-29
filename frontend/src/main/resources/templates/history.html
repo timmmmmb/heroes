@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <title>Heroes | Home</title>
+    <link href="/bootstrap.min.css" media="screen" rel="stylesheet"/>
+    <link href="/custom.css" media="screen" rel="stylesheet"/>
+    <script src="/jquery-3.4.1.min.js"></script>
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script th:inline="javascript">
+        //Use $ as 'jq' to prevent conflicts with thymeleaf
+        jQuery(document).ready(function (jq) {
+            heroPartySlideShow = w3.slideshow(".hero--party", 0);
+            heroNotPartySlideShow = w3.slideshow(".hero--not-party", 0);
+        });
+    </script>
+
+</head>
+<body>
+    <h1 style="alignment: center">
+        <span style="margin-left: 40%;" th:text="${selectedCamp.name}"></span>
+    </h1>
+
+    <div class="container">
+        <div th:each="history : ${histories}">
+            <p th:text="${history.getResult()}"></p>
+        </div>
+    </div>
+    <form class="form-horizontal" enctype="multipart/form-data" style="margin-right:2em;" th:action="@{/}">
+        <button class="btn btn-default" type="submit">Back</button>
+    </form>
+</body>
+</html>

@@ -2,6 +2,7 @@ package ch.bfh.tom.frontend.service;
 
 import ch.bfh.tom.frontend.model.Camp;
 import ch.bfh.tom.frontend.model.Hero;
+import ch.bfh.tom.frontend.model.History;
 import ch.bfh.tom.frontend.model.Item;
 import ch.bfh.tom.frontend.model.Party;
 import org.springframework.http.ResponseEntity;
@@ -22,4 +23,5 @@ public interface FrontendService {
     Hero applyShopItem(String itemID, String heroID, String campID);
     byte[] getHeroImage(String heroID);
     String changeName(String heroID, String name);
+    History[] getHistory(String campID);
 }
