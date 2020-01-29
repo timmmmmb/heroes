@@ -130,7 +130,7 @@ public class CampController {
     Camp addXpToCamp(@PathVariable String id) {
         Camp camp = campRepository.findById(id).get();
 
-        for (Hero hero : camp.getHeroes()) {
+        for (Hero hero : camp.getParty().getMembers()) {
             hero.setXp(hero.getXp() + 10.0);
         }
 
