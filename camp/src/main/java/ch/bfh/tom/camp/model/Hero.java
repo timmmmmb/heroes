@@ -62,6 +62,10 @@ public class Hero {
     }
 
     public void setXp(double xp) {
+        if (xp > 100.0) {
+            xp = 100.0;
+        }
+
         this.xp = xp;
     }
 

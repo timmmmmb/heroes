@@ -22,4 +22,7 @@ public interface CampClient {
 
     @RequestMapping(method = RequestMethod.GET, value = "/camps/{campID}/reward")
     Camp rewardCamp(@PathVariable("campID") String campID);
+
+    @RequestMapping(method = RequestMethod.GET, value = "/camps/{campID}/addXpToCamp")
+    Camp addXpToCamp(@PathVariable("campID") String campID);
 }

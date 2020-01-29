@@ -125,6 +125,19 @@ public class CampController {
         return campRepository.save(winner);
     }
 
+    @GetMapping("/{id}/addXpToCamp")
+    public @ResponseBody
+    Camp addXpToCamp(@PathVariable String id) {
+        Camp camp = campRepository.findById(id).get();
+
+        for (Hero hero : camp.getHeroes()) {
+            hero.setXp(hero.getXp() + 10.0);
+        }
+
+        return campRepository.save(camp);
+    }
+
+
     static class SortByStrength implements Comparator<Camp>
     {
         private Camp camp;

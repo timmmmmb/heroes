@@ -7,5 +7,6 @@ public interface PromoterService {
 
     Battle promoteFight(String campID);
     Camp rewardCamp(Battle battle);
+    Camp updateXp(Battle battle);
     void saveBattle(Battle battle);
 }
