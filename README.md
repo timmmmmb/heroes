@@ -36,7 +36,7 @@ Microservice Architecture
 
 <img src="./resources/Microservice Architecture.svg">
 
-##Installation
+## Installation
 Manuell ohne Docker
 1. Das Projekt von unserem Github-Repository pullen (https://github.com/timmmmmb/heroes) und als Maven-Projekt importieren
 2. Alle Dependencies laden: mvn clean install oder direkt über die IDE
