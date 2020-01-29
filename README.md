@@ -1,6 +1,8 @@
 # Heroes - Team Tom
 Unser Projekt für das Java Open Source Modul.
 
+<img alt="screenshot of the fronted" src="./resources/screenshot.png" width="500">
+
 ## Installationsanleitung lokal
 
 ### Importieren
