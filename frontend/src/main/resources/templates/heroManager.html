@@ -74,6 +74,7 @@
             </form>
             <h3 contenteditable="true" th:id="'heroName-'+${hero.id}" th:onKeyPress="'onEnter(event)'"
                 th:text="${hero.name}"></h3>
+            <h4 th:text="${'Level ' + hero.getLevel()}"></h4>
             <p style="margin-bottom: 1px">HP:
             <div class="progress" style="margin-bottom: 2px">
                 <div aria-valuemax="100" aria-valuemin="0" class="progress-bar"
@@ -93,6 +94,13 @@
                 <div aria-valuemax="100" aria-valuemin="0" class="progress-bar"
                      role="progressbar" th:aria-valuenow="${hero.getAtk()}"
                      th:style="'width:'+${hero.getAtk()}+'%; background-color:red'" th:text="${hero.getAtk()}"></div>
+            </div>
+            </p>
+            <p style="margin-bottom: 1px">XP:
+            <div class="progress" style="margin-bottom: 2px">
+                <div aria-valuemax="100" aria-valuemin="0" class="progress-bar"
+                     role="progressbar" th:aria-valuenow="${hero.getXp()}"
+                     th:style="'width:'+${hero.getXp()}+'%; background-color:lightgreen'" th:text="${hero.getXp()}"></div>
             </div>
             </p>
         </div>
@@ -117,6 +125,7 @@
             </form>
             <h3 contenteditable="true" th:id="'heroName-'+${hero.id}" th:onKeyPress="'onEnter(event)'"
                 th:text="${hero.name}"></h3>
+            <h4 th:text="${'Level ' + hero.getLevel()}"></h4>
             <p style="margin-bottom: 1px">HP:
             <div class="progress" style="margin-bottom: 2px">
                 <div aria-valuemax="100" aria-valuemin="0" class="progress-bar"
@@ -136,6 +145,13 @@
                 <div aria-valuemax="100" aria-valuemin="0" class="progress-bar"
                      role="progressbar" th:aria-valuenow="${hero.getAtk()}"
                      th:style="'width:'+${hero.getAtk()}+'%; background-color:red'" th:text="${hero.getAtk()}"></div>
+            </div>
+            </p>
+            <p style="margin-bottom: 1px">XP:
+            <div class="progress" style="margin-bottom: 2px">
+                <div aria-valuemax="100" aria-valuemin="0" class="progress-bar"
+                     role="progressbar" th:aria-valuenow="${hero.getXp()}"
+                     th:style="'width:'+${hero.getXp()}+'%; background-color:lightgreen'" th:text="${hero.getXp()}"></div>
             </div>
             </p>
         </div>

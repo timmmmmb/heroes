@@ -21,6 +21,8 @@ public class Hero {
     private double atk;
     private double def;
     private double hp;
+    private double xp;
+    private int level;
     private double price;
     private String imagePath;
 
@@ -54,6 +56,34 @@ public class Hero {
 
     public void setHp(double hp) {
         this.hp = hp;
+    }
+
+    public double getXp() {
+        return xp;
+    }
+
+    public void setXp(double xp) {
+        while (xp >= 100.0) {
+            xp -= 100.0;
+            this.levelUp();
+        }
+
+        this.xp = xp;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    private void levelUp() {
+        setLevel(getLevel() + 1);
+
+        this.setAtk(Math.min(this.getAtk() * 1.05, 100.0));
+        this.setDef(Math.min(this.getDef() * 1.05, 100.0));
     }
 
     public String getId() {
@@ -101,12 +131,14 @@ public class Hero {
         return atk == hero.atk &&
                 def == hero.def &&
                 hp == hero.hp &&
+                level == hero.level &&
+                xp == hero.xp &&
                 id.equals(hero.id) &&
                 name.equals(hero.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, atk, def, hp);
+        return Objects.hash(id, name, atk, def, hp, xp, level);
     }
 }

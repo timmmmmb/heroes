@@ -5,7 +5,6 @@ import ch.bfh.tom.promoter.client.CampClient;
 import ch.bfh.tom.promoter.client.HistoryClient;
 import ch.bfh.tom.promoter.model.Battle;
 import ch.bfh.tom.promoter.model.Camp;
-import ch.bfh.tom.promoter.model.Party;
 import ch.bfh.tom.promoter.service.PromoterService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,10 +46,19 @@ public class DefaultPromoterService implements PromoterService {
     @Override
     public Camp rewardCamp(Battle battle) {
         Camp winner = battle.getWinner();
-        if(winner == null) {
+        if (winner == null) {
             return null;
         }
         return campClient.rewardCamp(winner.getId());
+    }
+
+    @Override
+    public Camp updateXp(Battle battle) {
+        Camp winner = battle.getWinner();
+        if (winner == null) {
+            return null;
+        }
+        return campClient.addXpToCamp(winner.getId());
     }
 
     @Override
