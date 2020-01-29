@@ -19,6 +19,7 @@ public class Hero {
     private double def;
     private double hp;
     private double xp;
+    private int level;
     private double price;
     private String imagePath;
     private String image;
@@ -71,6 +72,14 @@ public class Hero {
         this.xp = xp;
     }
 
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
     public String getId() {
         return id;
     }
@@ -106,12 +115,13 @@ public class Hero {
                 def == hero.def &&
                 hp == hero.hp &&
                 xp == hero.xp &&
+                level == hero.level &&
                 id.equals(hero.id) &&
                 name.equals(hero.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, atk, def, hp, xp);
+        return Objects.hash(id, name, atk, def, hp, xp, level);
     }
 }
