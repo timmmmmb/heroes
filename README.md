@@ -29,6 +29,7 @@ Im Browser auf <http://localhost:8080/> navigieren, da sich dort der Frontendser
 | Arena | 3333 | Führt die Kämpfe durch |
 | Promoter | 4444 | Teilt die Resultate von Kämpfen mit |
 | Shop | 5555 | Stellt Items zur Verfügung |
+| History | 7777 | Speichert alle durchgeführeten Kämpfe |
 | Frontend | 8080 | Frontend welches den Usern zugriff zum Spiel gewährt |
 
 Microservice Architecture
